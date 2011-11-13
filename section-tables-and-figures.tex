@@ -1,0 +1,333 @@
+\begin{frame}
+  \frametitle{Idee}
+
+  Tabellen en afbeeldingen kunnen rechtstreeks in onze tekst geplaatst worden, maar vaak is het beter dit in een float te plaatsen. Dit leg ik dus eerst uit, alvorens daadwerkelijk afbeeldingen en tabellen te maken.
+\end{frame}
+
+\subsection{Floats}
+\begin{frame}
+  \frametitle{Floats}
+
+  De beste manier van opvullen wordt door \LaTeX\ zelf bepaald, de tekst vloeit rondom de figuren en tabellen om een optimale layout te bepalen. Je hebt zelf wel nog controle. \\[1em]
+
+  \texttt{\textbackslash begin\{figure\}[$\langle$\textsl{modifiers}$\rangle$]} \\
+  \texttt{\textbackslash end\{figure\}} \\[.5em]
+
+  \texttt{\textbackslash begin\{table\}[$\langle$\textsl{modifiers}$\rangle$]} \\
+  \texttt{\textbackslash end\{table\}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Modifiers}
+
+  \begin{tabular}{cl}
+    code & betekenis \\\midrule
+    \texttt{h} & plaats deze exact op de plaats van definitie \\
+    \texttt{t} & bovenaan een pagina (top) \\
+    \texttt{b} & onderaan een pagina (bottom) \\
+    \texttt{p} & op een speciale pagina voor floats \\
+    \texttt{!} & negeer eventuele betere opties
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeeld}
+
+  \begin{minted}{tex}
+\begin{table}[h]
+  ...
+\end{table}
+
+\begin{table}[p]
+  ...
+\end{table}
+\end{minted}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Combinaties}
+
+  Modifiers kunnen gecombineerd worden zodat je verschillende mogelijke opties toelaat: \\
+
+  \begin{description}
+    \item[\texttt{!hbp}] plaats de tabel op de plaats van definitie, onderaan een pagina of op een speciale pagina voor floats, ook al zou het beter zijn deze bovenaan een pagina te plaatsen
+    \item[\texttt{tbp}] de standaardspecificatie
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Opmerkingen}
+
+  \begin{itemize}
+    \item herinner \verb|\clearpage| versus \verb|\newpage|;
+    \item floats worden in een wachtrij gezet die wordt gerespecteerd;
+    \item probeer pas op het einde aandacht te besteden aan placement modifiers, als je tekst grotendeels af is.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Bijschriften}
+
+  \texttt{\textbackslash begin\{figure\}[$\langle$\textsl{modifiers}$\rangle$]} \\
+  \ \ \ldots \\
+  \ \ \texttt{\textbackslash caption\{$\langle$\textsl{bijschrift}$\rangle$\}} \\
+  \texttt{\textbackslash end\{figure\}}
+
+  \begin{exampleblock}{Tip}
+    Vergeet \verb|\usepackage[dutch]{babel}| niet!
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Verwijzen}
+
+  Herinner de constructie met \texttt{\textbackslash label\{$\langle$\textsl{marker}$\rangle$\}} en \texttt{\textbackslash ref\{$\langle$\textsl{marker}$\rangle$\}}, deze werkt hier ook.
+
+  \begin{alertblock}{Opgelet}
+    Plaats het label \emph{binnenin} of \emph{na} de caption.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeeld}
+  \begin{minted}{tex}
+\begin{figure}[tp]
+  \centering
+  \ldots
+  \caption{Bijschrift}
+  \label{figure:meeuw}
+\end{figure}
+\end{minted}
+\end{frame}
+
+\subsection{Afbeeldingen}
+\begin{frame}[fragile]
+  \frametitle{Afbeeldingen}
+
+  Een belangrijke package:
+  \begin{minted}{tex}
+\usepackage{graphicx}
+  \end{minted}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Ondersteunde formaten (voor \texttt{pdflatex})}
+
+  \begin{description}[vectorformaten]
+    \item[\texttt{jpg}] lossy, voor foto's (maar ik raad je dit af)
+    \item[\texttt{png}] lossless, voor alles wat geen foto is zoals screenshots, diagrammen, schema's (een goede optie bij gebrek aan beter)
+    \item[\texttt{pdf}] combineert voorgaande, maar ook echte vector graphics (het beste idee als het mogelijk is)
+    \item[vectorformaten] de \emph{beste} optie, maar moeilijker
+    \item[\texttt{eps}] via \texttt{epstopdf}
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Afbeeldingen toevoegen}
+
+  \texttt{\textbackslash includegraphics} \\
+  \ \ \texttt{[$\langle$\textsl{optie-1}$\rangle$=$\langle$\textsl{waarde-1}$\rangle$,\ldots,$\langle$\textsl{optie-$n\rangle$}=$\langle$\textsl{waarde-$n\rangle$}]} \\
+  \ \ \texttt{\{$\langle$\textsl{bestandsnaam}$\rangle$\}}
+
+  \begin{minted}{tex}
+\includegraphics[scale=0.5]{cat}
+  \end{minted}
+
+  \begin{exampleblock}{Extensie}
+    Merk op: extensies zijn niet per se nodig.    
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Opties}
+
+  \begin{description}
+    \item[\texttt{width}] en ook \texttt{height}, als er slechts \'e\'en gespecifieerd is schaalt de andere mooi mee
+    \item[\texttt{scale=\textsl{$\langle$x$\rangle$}}] een schaalfactor, $x\in\mathbb{R}_0^+$
+    \item[\texttt{angle=\textsl{$\langle$n$\rangle$}}] tegenwijzerzin draaien over~$n$ graden
+  \end{description}
+
+  De eenheden in \LaTeX\ werken zoals je zou verwachten:
+  \begin{minted}{tex}
+\includegraphics[width=3cm]{cat}
+\includegraphics[width=1in,height=154pt]{cat}
+\end{minted}
+
+\href{http://en.wikibooks.org/wiki/LaTeX/Useful_Measurement_Macros}{\texttt{en.wikibooks.org/wiki/LaTeX/Useful\_Measurement\_Macros}}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Nu samen met \texttt{figure}}
+
+\begin{minted}{tex}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=3cm]{kitten}
+  \caption{Een kat}
+  \label{figure:cat}
+\end{figure}
+\end{minted}
+\end{frame}
+
+\subsection{Tabellen}
+\begin{frame}[fragile]
+  \frametitle{Opzet}
+
+  We kennen al de \verb|table|-omgeving maar dat is slechts een wrapper rond tabellen, nu gaan we daadwerkelijk tabellen maken. Enkele opmerkingen:
+  \begin{itemize}
+    \item er is \emph{heel veel} mogelijk, ik kan verre van alles behandelen;
+    \item probeer het simpel te houden: is je tabel nodig? is alle data nodig?
+    \item er bestaan tools om tabellen te exporteren uit OpenOffice, dus misschien ook wel voor Microsoft Office.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\texttt{tabular}}
+
+  De omgeving waarin alles gebeurt, de vorm:
+
+  \texttt{\textbackslash begin\{tabular\}[$\langle$\textsl{positie}$\rangle$]\{$\langle$\textsl{specificatie}$\rangle$\}} \\
+  \ \ \texttt{\ldots} \\
+  \texttt{\textbackslash end\{tabular\}}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Positie}
+
+  Niet heel erg van toepassing omdat je van mij altijd een \verb|table|-omgeving moet gebruiken, maar voor de volledigheid, hiermee wordt de positie tegenover de baseline gegeven, dus
+  \begin{tabular}[b]{ccc}
+    1 & 2 & 3 \\\midrule
+    4 & 5 & 6
+  \end{tabular}
+  maar ook
+  \begin{tabular}[c]{ccc}
+    1 & 2 & 3 \\\midrule
+    4 & 5 & 6
+  \end{tabular}
+  of
+  \begin{tabular}[t]{ccc}
+    1 & 2 & 3 \\\midrule
+    4 & 5 & 6
+  \end{tabular}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Specificatie, verticale informatie}
+
+  Bepaalt het uitzicht van de tabel, is een reeks karakters met elk hun eigen betekenis die bepaalt hoeveel \emph{kolommen} er zijn, hoe deze uitgelijnd worden en waar er verticale lijnen geplaatst worden. \\[1em]
+
+  \begin{tabular}{cl}
+    specifier & werking \\\midrule
+    \texttt{l} & links uitlijnen \\
+    \texttt{c} & centreren \\
+    \texttt{r} & rechts uitlijnen \\
+    \texttt{|} & een verticale lijn (\texttt{||} zijn er twee) \\
+    \texttt{p}\{$\langle$\textsl{breedte}$\rangle$\} & een alinea met een vaste breedte
+  \end{tabular}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Verticale lijnen}
+
+  \begin{alertblock}{Tip}
+    Probeer verticale strepen te vermijden. Zie bijvoorbeeld ook de package \href{http://ctan.org/pkg/booktabs}{\texttt{ctan.org/pkg/booktabs}}.
+  \end{alertblock}
+
+  In deze slides gebruik ik deze package om meteen het goede voorbeeld te geven.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Hoe werkt \texttt{p}\{$\langle$\textsl{breedte}$\rangle$\}?}
+
+  \begin{exampleblock}{Uitleg}
+  Een cel wordt zo breed als nodig is, zonder rekening te houden met de breedte van het blad. Daarvoor dient de optie \texttt{p}\{$\langle$\textsl{breedte}$\rangle$\} dus.
+\end{exampleblock}
+
+  \begin{tabular}{cl}
+    Een gecentreerde cel & Dit is een links uitgelijnde cel die botweg buiten het blad zal lopen. \\
+  \end{tabular} \\[1em]
+  \begin{tabular}{cp{.5\textwidth}}
+    Een tweede tabel & Dit is een paragraaf die mooi wordt afgebroken zoals je kan zien. \\
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Nieuwe manieren om afstanden te geven}
+
+  We zagen reeds dat we via eenheden konden werken, maar \LaTeX\ specifieert ook een aantal lengtes afhankelijk van je document:
+  \begin{minted}{tex}
+\begin{tabular}{cp{.5\textwidth}}
+  ...
+\end{tabular}
+  \end{minted}
+
+  Zie wederom \href{http://en.wikibooks.org/wiki/LaTeX/Useful_Measurement_Macros}{\texttt{en.wikibooks.org/wiki/LaTeX/Useful\_Measurement\_Macros}}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Horizontale informatie}
+
+  \begin{tabular}{cp{.7\textwidth}}
+    \texttt{\&} & tussen kolommen \\
+    \texttt{\textbackslash\textbackslash} & start een nieuwe kolom \\
+    \texttt{\textbackslash\textbackslash$\langle$\textsl{n}pt$\rangle$} & start een nieuwe kolom, optioneel een witruimte van de opgegeven dimensie \\
+    \texttt{\textbackslash hline} & horizontale lijn \\
+    \texttt{\textbackslash newline} & een nieuwe regel \emph{binnen de cel zelf}, voor \texttt{p\{$\langle$\textsl{dimensie}$\rangle$\}}
+  \end{tabular} 
+
+  En in de \package{booktabs}: \verb|\toprule|, \verb|\midrule|, \verb|\bottomrule|.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeelden}
+
+  \begin{LTXexample}
+\begin{tabular}{lcr}
+  1 & 2 & 3a \\
+  4 & 5b & 6 \\
+  7c & 8 & 9
+\end{tabular} 
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeeld}
+
+  \inputminted{tex}{table-example.tex}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeeld}
+
+  \input{table-example.tex}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\textbackslash multicolumn}}
+
+  \texttt{\textbackslash multicolumn\{$\langle$\textsl{n}$\rangle$\}\{$\langle$\textsl{specificatie}$\rangle$\}\{$\langle$\textsl{tekst}$\rangle$\}} \\[1em]
+
+  \begin{tabular}{cl}
+    $\langle$\textsl{n}$\rangle$ & aantal kolommen dat vanaf dan samengenomen moet worden \\
+    $\langle$\textsl{specificatie}$\rangle$ & uitlijning, zoals daarvoor \\
+    $\langle$\textsl{tekst}$\rangle$ & de eigenlijke tekst \\
+  \end{tabular} \\[2em]
+
+  Ook een package \package{multirow} om \verb|\multirow| mogelijk te maken.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Alles te samen}
+
+  \scriptsize
+  \begin{minted}{tex}
+\usepackage{dcolumn}
+  \end{minted}
+  \inputminted{tex}{table-example-2.tex}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Alles tesamen}
+
+  \input{table-example-2.tex}
+\end{frame}

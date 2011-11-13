@@ -1,0 +1,33 @@
+
+\documentclass[a4paper,11pt]{article}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[T1]{fontenc}
+\usepackage{tgpagella}
+\usepackage[dutch]{babel}
+
+\lstset{ %
+language=tex,                % choose the language of the code
+basicstyle=\footnotesize\tt,       % the size of the fonts that are used for the code
+numbers=left,                   % where to put the line-numbers
+numberstyle=\footnotesize,      % the size of the fonts that are used for the line-numbers
+numbersep=5pt,                  % how far the line-numbers are from the code
+backgroundcolor=\color{white},  % choose the background color. You must add \usepackage{color}
+showspaces=false,               % show spaces adding particular underscores
+showstringspaces=true,         % underline spaces within strings
+showtabs=false,                 % show tabs within strings adding particular underscores
+frame=single,                   % adds a frame around the code
+tabsize=2,                      % sets default tabsize to 2 spaces
+captionpos=b,                   % sets the caption-position to bottom
+breaklines=true,                % sets automatic line breaking
+breakatwhitespace=false,        % sets if automatic breaks should only happen at whitespace
+morekeywords={*,...}            % if you want to add more keywords to the set
+}
+
+\title{Oplossing}
+
+\begin{document}
+\maketitle
+\lstinputlisting{opgave-2.tex}
+\lstinputlisting{opgave-2.bib}
+\end{document}

@@ -1,0 +1,494 @@
+\subsection{De structuur van tekst}
+\begin{frame}[fragile]
+  \frametitle{Lokale structuur}
+
+  Alles draait om \emph{alinea's}. Een nieuwe alinea beginnen gebeurt door twee witregels te maken:
+
+  \begin{minted}{latex}
+Dit is een eerste alinea.
+
+Dit is een tweede alinea.
+Dit is geen derde alinea, de nieuwregel wordt genegeerd.
+  \end{minted}
+
+  Gebruik deze om je tekst lokaal structuur te geven.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Andere manieren voor lokale structuur}
+
+  \begin{itemize}
+    \item een regel afbreken (dus een nieuwe starten): \texttt{\textbackslash\textbackslash} of \texttt{\textcolor{uagreen}\textbackslash newline};
+    \item een nieuwe pagina beginnen: \texttt{\textcolor{uagreen}{\textbackslash clearpage}} en \texttt{\textcolor{uagreen}{\textbackslash newpage}};
+    \item nog wat varianten: zie \texttt{lshort-dutch}.
+  \end{itemize}
+
+  Een wijze raad: ik gebruik deze zo goed als nooit, er is geen reden om aan te nemen dat jullie ze \emph{wel} excessief nodig hebben, je doet misschien iets verkeerd in dat geval.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Opmerking bij \texttt{\textbackslash clearpage} en \texttt{\textbackslash newpage}}
+
+  \begin{exampleblock}{De enige echte waarheid}
+    \texttt{\textcolor{uagreen}{\textbackslash clearpage}} zorgt er voor dat tabellen en figuren die nog getypeset moeten worden geplaatst worden \emph{voor} de nieuwe pagina, bij \texttt{\textcolor{uagreen}{\textbackslash newpage}} gebeurt dit niet.
+  \end{exampleblock}
+  
+  Er zijn ook \texttt{\textcolor{uagreen}{\textbackslash nopagebreak}[$\langle$\textsl{n}$\rangle$]}, \texttt{\textcolor{uagreen}{\textbackslash pagebreak}[$\langle$\textsl{n}$\rangle$]} en \texttt{\textcolor{uagreen}{\textbackslash nolinebreak}[$\langle$\textsl{n}$\rangle$]} die een bepaalde mate van het doorbreken der voorgeprogrammeerde regels bepalen.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Globale structuur}
+
+  Om hoofdstukken en varianten aan te duiden gebruiken we
+  \begin{tabular}{lcl}
+    commando & niveau & opmerking \\\midrule
+    \texttt{\textcolor{uagreen}{\textbackslash part}\{\}} & -1 & niet in~\texttt{letter} \\
+    \texttt{\textcolor{uagreen}{\textbackslash chapter}\{\}} & 0 & niet in~\texttt{letter} en~\texttt{article} \\
+	  \texttt{\textcolor{uagreen}{\textbackslash section}\{\}} & 1 & niet in~\texttt{letter} \\
+    \texttt{\textcolor{uagreen}{\textbackslash subsection}\{\}} & 2 & niet in~\texttt{letter} \\
+    \texttt{\textcolor{uagreen}{\textbackslash subsubsection}\{\}} & 3 & niet in~\texttt{letter} \\
+    \texttt{\textcolor{uagreen}{\textbackslash paragraph}\{\}} & 4 & niet in~\texttt{letter} \\
+	  \texttt{\textcolor{uagreen}{\textbackslash subparagraph}\{\}} & 5 & niet in~\texttt{letter} \\
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Wat \emph{niet} te doen?}
+
+  \begin{itemize}
+	  \item zelf alinea's forceren met behulp van \verb|\\|;
+    \item zelf met vette tekst, eigen nummeringen of wat dan ook structuur proberen aan te brengen;
+    \item te veel niveaus gebruiken: ik heb nog nooit \texttt{\textcolor{uagreen}{\textbackslash subsubsection}\{\}} of \texttt{\textcolor{uagreen}{\textbackslash subparagraph}\{\}} gebruikt;
+    \item \ldots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\textbackslash tableofcontents}}
+  \begin{minted}{latex}
+\tableofcontents
+  \end{minted}
+  \LaTeX~maakt automatisch een inhoudsopgave op basis van de gebruikte~\texttt{\textcolor{uagreen}{\textbackslash section}\{\}}-commando's en aanverwanten.
+  
+  Om de diepte te controleren:
+  \begin{minted}{latex}
+\setcounter{tocdepth}{3}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\textbackslash tableofcontents}}
+
+  \begin{exampleblock}{Tip}
+    Voeg \texttt{\textcolor{uagreen}{\textbackslash usepackage}\{hyperref\}} toe aan je preamble om een inhoudsopgave in je \texttt{pdf} reader te krijgen.
+  \end{exampleblock}
+\end{frame}
+
+\subsection{Speciale karakters en symbolen}
+\begin{frame}[fragile]
+  \frametitle{Aanhalingstekens}
+
+  We willen als resultaat~``test'', gebruik hiervoor
+  \begin{minted}{tex}
+	``test''
+  \end{minted}
+  dus eerst back-ticks en daarna vertical quotes.
+  \begin{alertblock}{Tip}
+	Gebruik~\emph{nooit} \verb|"|. Het resultaat: "test".
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Enkele aanhalingstekens}
+
+  Heel simpel: gewoon \'e\'en back-tick om te openen en \'e\'en vertical quote om te sluiten.
+
+  \begin{LTXexample}[numbers=none,basicstyle=\ttfamily]
+`test'
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Liggende streepjes}
+  Niet minder dan vi\'er soorten liggende streepjes:
+  \begin{tabular}[]{cccc}
+	naam & input & output & doel \\\midrule
+	hyphen & \verb|-| & - & splitsen in lettergrepen \\
+	en dash & \verb|--| & -- & reeksen jaartallen, pagina's, \ldots \\
+	em dash & \verb|---| & --- & gedachtestreepje \\
+	minteken & \verb|$-$| & $-$ & in wiskundige uitdrukking
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Liggende streepjes: voorbeeld}
+
+  \begin{minted}{latex}
+vergeet-me-nietje, $n$-dimensionaal
+pagina's 480--492, 1939--1945, de vlucht New York--London
+Jan gaf de pennenzak --- inclusief slijper --- aan Tim.
+Hoeveel is~$5-3$?
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Het beletselteken}
+  
+  Niet zo... maar zo\ldots (in dit lettertype maakt het weinig verschil, in andere gevallen w\'el)
+  \begin{minted}{latex}
+Niet zo... maar zo\ldots
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Accenten}
+
+  \begin{center}
+    \begin{tabular}{lllllllllll}
+      \`o & \verb|\`o| & & \'o & \verb|\'o| & & \^o & \verb|\^o| & & \~o & \verb|\~o| \\
+      \=o & \verb|\=o| & & \.o & \verb|\.o| & & \"o & \verb|\"o| & & \c c & \verb|\c| \\
+	  \u o & \verb|\u o| & & \v o & \verb|\v o| & & \H o & \verb|H o| & & \c o & \verb|\c o| \\
+	  \oe & \verb|\oe| & & \OE & \verb|\OE| & & \ae & \verb|\ae| & & \AE & \verb|\AE| \\
+	  \o & \verb|\o| & & \O & \verb|\O| & & \l & \verb|\l| & & \L & \verb|\L| \\
+	  \i & \verb|\i| & & \j & \verb|\j| & & !` & \verb|!`| & & ?` & \verb|?`|
+    \end{tabular}
+  \end{center}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Accenten: de belangrijke}
+
+  \begin{itemize}
+    \item accent grave
+      \begin{LTXexample}
+\`a
+      \end{LTXexample}
+    \item accent aigu
+      \begin{LTXexample}
+\'e
+      \end{LTXexample}
+    \item c\'edille
+      \begin{LTXexample}
+\c c
+      \end{LTXexample}
+    \item trema
+      \begin{LTXexample}
+\"a \"e \"{e}
+      \end{LTXexample}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Taal en woordsplitsing}
+
+  Een klein uitstapje: herinner je de lessen Nederlands nog waar je leerde splitsen in lettergrepen? \LaTeX~doet dit automatisch voor je!
+
+  \begin{enumerate}
+    \item \texttt{\textcolor{uagreen}{\textbackslash usepackage}[dutch]\{babel\}}
+    \item afbreking verhinderen: \texttt{\textcolor{uagreen}{\textbackslash mbox}\{\}}
+    \item je kan het handmatig aanpassen indien nodig (bijvoorbeeld via \texttt{\textcolor{uagreen}{\textbackslash hyphenation}\{\}} en \texttt{\textcolor{uagreen}{\textbackslash discretionary}\{\}\{\}\{\}} of lokaal met~\verb|\-|), zie \texttt{lshort-dutch}
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Taal en woordsplitsing: voorbeelden}
+
+  \begin{minted}{latex}
+\hyphenation{Fortran wis-kun-de}
+\discretionary{diner-}{tje}{dineetje}
+
+elementaire\-deeltjes\-fysica\-fanaat
+\mbox{bestand}
+  \end{minted}
+  Ik wijs je op het bestaan hiervan voor moest je ooit in een situatie komen waarbij het grondig fout loopt, maar ik heb het nog nooit nodig gehad.
+\end{frame}
+
+
+%\begin{frame}[fragile]
+%  \frametitle{Font encoding}
+%
+%  Je kan de nodige accenten onthouden (wat makkelijker is dan je denkt), of je gebruikt
+%  \begin{minted}{tex}
+%\usepackage[T1]{fontenc}
+%\usepackage{lmodern}
+%  \end{minted}
+%  of een ander lettertype naar keuze, zorg dat je voldoende fonts hebt.
+%
+%  Nu kan je gewoon accenten typen zoals je gewend bent.
+%\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Spatiegebruik}
+
+  Er zijn drie soorten spaties: de gewone spatie \texttt{\textvisiblespace}, de tilde \texttt{\~} en \texttt{\textbackslash\textvisiblespace}. Gebruik de eerste bij gewone tekst, de tweede als non-breakable space en de derde wanneer een punt bij een afkorting geen einde van een zin aanduidt of na een commando (waarom?).
+
+\begin{LTXexample}
+gewone tekst \\
+\LaTeX\ is leuk \\
+ik zag 2~beren
+\end{LTXexample}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Franse stijl}
+
+  \LaTeX\ gebruikt een iets bredere spatie na het einde van een zin, wil je dit niet, gebruik dan \texttt{\textcolor{uagreen}{\textbackslash frenchspacing}}.
+\end{frame}
+
+\subsection{Verwijzingen}
+\begin{frame}
+  \frametitle{Verwijzingen}
+
+  We kunnen verwijzen naar objecten met een nummer:
+  \begin{itemize}
+	  \item hoofdstukken,
+	  \item figuren,
+	  \item tabellen,
+	  \item alinea's,
+	  \item opsommingen,
+	  \item \ldots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Markers}
+
+  Maak een~\texttt{label} aan met~\texttt{\textcolor{uagreen}{\textbackslash label}\{$\langle$\textsl{marker}$\rangle$\}}. Een tip: voeg aan de marker toe wat voor type het is:
+  \begin{minted}{tex}
+	\label{fig:zeemeeuw}
+	\label{figure:zeemeeuw}
+	\label{enumerate:pythagoras-2}
+  \end{minted}
+
+  \begin{alertblock}{Figuren en tabellen}
+    We weten nog niet hoe we deze maken, maar het label komt~\emph{na} de caption! Het commando~\texttt{\textcolor{uagreen}{\textbackslash label}\{\}} onthoudt enkel de laatst gegenereerde nummer.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Verwijzen}
+
+  Door \texttt{\textcolor{uagreen}{\textbackslash ref}\{$\langle$\textsl{marker}$\rangle$\}} en \texttt{\textcolor{uagreen}{\textbackslash pageref}\{$\langle$\textsl{marker}$\rangle$\}}, de eerste geeft een numerieke identificatie (het hoofdstuknummer, de opsomming, \ldots), de tweede de pagina waarop deze zich bevindt.
+
+  \begin{exampleblock}{Two passes}
+	  \LaTeX\ werkt hier met een two-pass systeem: je moet je document twee keer builden om het resultaat te zien: de eerste keer slaat hij op waar welke verwijzingen staan, de tweede keer kan hij ze ook weergeven.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeeld}
+  \begin{minted}{tex}
+\section{Meeuwen}
+\label{sec:meeuw}
+Meeuwen zijn vogels.
+\section{Conclusie}
+In Hoofdstuk~\ref{sec:meeuw} op pag.~\pageref{sec:meeuw}
+zagen we dat meeuwen vogels zijn.
+\end{minted}
+
+  \begin{exampleblock}{Spatiegebruik}
+	Merk op dat wat we geleerd hebben over spatiegebruik hier belangrijk is!
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voetnoten}
+
+  Een simpel commando: \texttt{\textcolor{uagreen}{\textbackslash footnote}\{$\langle$\textsl{tekst}$\rangle$\}}.
+  \begin{minted}{tex}
+	Voetnoten\footnote{Zoals deze.} zijn
+	populair bij \LaTeX-gebruikers.
+  \end{minted}
+
+  \begin{exampleblock}{Voetnotitis}
+	  Overdrijf niet met voetnoten\footnote{Nee, \'echt niet.}.
+  \end{exampleblock}
+
+  Let ook goed op de interpunctie, zoals in het voorbeeld duidelijk wordt.
+\end{frame}
+
+\subsection{Stijl van het lettertype wijzigen}
+\begin{frame}
+  \frametitle{Nadruk}
+
+  Er zijn verschillende manieren om nadruk te leggen: \underline{onderlijnen}, \textsl{schuin}, \textbf{vet} of gewoon~\emph{benadrukt}.
+
+  \LaTeX\ weet zelf wat goed is, probeer dus niet je eigen wil op te dringen. Vette en onderlijnde tekst wordt afgeraden en wat als je binnen een schuingedrukt stuk tekst nog iets wil benadrukken?
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Nadruk: voorbeelden}
+  \begin{LTXexample}
+\underline{onderlijnd} \\
+\textit{italic} \\
+\textsl{slanted} \\
+\textbf{vet} \\
+\texttt{typewriter} \\
+\emph{benadrukt}
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Slanted vs.\ italic}
+
+  Slanted type is gewone tekst maar enigszins verbogen, italic is een ander font waarin dus de letters daadwerkelijk anders zijn. Mijn voorkeur ligt bij slanted.
+
+  Dit is \textsl{slanted tekst} en dit \textit{is italic}. Zoals je ziet is er in dit lettertype spijtig genoeg geen verschil, maar laten we het eens zelf proberen.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Waarom nu~\texttt{\textbackslash emph}?}
+
+  \begin{minted}{tex}
+	\emph{Dit is een benadrukte tekst,
+	  \emph{let op} voor de extra nadruk}
+  \end{minted}
+
+  Deze situatie komt bijvoorbeeld voor als je stellingen en definities opschrijft, je je~\verb|quotation| omgeving aanpast, \ldots
+\end{frame}
+
+\subsection{Omgevingen}
+\begin{frame}
+  \frametitle{Omgevingen}
+  We zagen reeds commando's, maar \LaTeX~ondersteunt ook grotere entiteiten:
+
+  \texttt{\textcolor{uagreen}{\textbackslash begin}\{$\langle\textsl{naam}\rangle$\}\{$\langle\textsl{opties}\rangle$\}[$\langle\textsl{opties}\rangle$]}\\
+  \hspace{2em}\ldots \\  
+  \texttt{\textcolor{uagreen}{\textbackslash end}\{$\langle\textsl{naam}\rangle$\}}
+  \pause\begin{exampleblock}{Opmerking}
+	  De syntax zoals ik ze hier schets is niet helemaal wat er \'echt gebeurt, maar dit is (gelukkig voor jullie) geen cursus \TeX~hacken.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Lijsten}
+
+  We hebben 3 omgevingen voor lijsten:
+  \begin{description}[\texttt{description}]
+  	\item[\texttt{itemize}] ongenummerde opsomming
+  	\item[\texttt{enumerate}] genummerde opsomming
+  	\item[\texttt{description}] beschrijvingen (u ziet er \'e\'en)
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{itemize}}
+
+  \begin{LTXexample}
+\begin{itemize}
+  \item eerste item;
+  \item tweede item;
+  \item derde item
+
+    Een nieuwe alinea.
+\end{itemize}
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{enumerate}}
+
+  \begin{LTXexample}
+\begin{enumerate}
+  \item eerste item;
+  \item tweede item;
+  \item derde item
+
+    Een nieuwe alinea.
+\end{enumerate}
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{description}}
+
+  \begin{LTXexample}
+\begin{description}
+  \item[hond] kwijlend zoogdier
+  \item[walvis] zeezoogdier
+  \item[Willy] bekend kalf
+\end{description}
+  \end{LTXexample}
+
+  \pause\begin{exampleblock}{Tijdsgewrocht}
+    Merk op welke Woestijnvisreeks op het moment van opstellen populair was.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nesting}
+
+  Deze lijsten kunnen meerdere niveaus diep gaan:
+  \begin{enumerate}
+	\item dit is een eerste item op het eerste niveau
+	\item dit is een tweede item op het eerste niveau
+	  \begin{itemize}
+		\item dit is een eerste item op het tweede niveau
+		\item en dit een tweede
+	  \end{itemize}
+	\item dit is een derde item op het eerste niveau
+	  \begin{enumerate}
+		\item we kunnen ook genummerd nesten
+	  \end{enumerate}
+  \end{enumerate}
+
+  \begin{alertblock}{Waarschuwing}
+	Overdrijf niet!
+  \end{alertblock}
+\end{frame}
+
+
+\begin{frame}
+  \frametitle{Uitlijnen}
+
+  \begin{itemize}
+    \item links uitlijnen: \texttt{\textcolor{uagreen}{\textbackslash begin}\{flushleft\}...\textcolor{uagreen}{\textbackslash end}\{flushleft\}}
+    \item rechts uitlijnen: \texttt{\textcolor{uagreen}{\textbackslash begin}\{flushright\}...\textcolor{uagreen}{\textbackslash end}\{flusright\}}
+    \item centreren: \texttt{\textcolor{uagreen}{\textbackslash begin}\{center\}...\textcolor{uagreen}{\textbackslash end}\{center\}}
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Centreren bij tabellen of figuren}
+
+  We hebben nog niet gezien hoe tabellen of figuren werken, maar hier is al \emph{a word of advice}:
+  \begin{exampleblock}{\texttt{\textbackslash centering}}
+    Gebruik de~\texttt{\textcolor{uagreen}{\textbackslash centering}} macro als je figuren of tabellen wil centreren, hier komt geen extra verticale witruimte bij.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Verbatim}
+
+  Om tekst \emph{letterlijk} over te nemen heb je verbatim nodig: inline is dit~\texttt{\textcolor{uagreen}{\textbackslash verb}|...\textcolor{uagreen}{\textbackslash verb}|} waar~\verb!|! eender welk karakter behalve letters, een asterisk of een spatie mag zijn.
+
+  \texttt{\textcolor{uagreen}{\textbackslash verb}*|twee  spaties|} geeft~\verb*|twee  spaties|.
+
+  Grotere stukken doe je met een omgeving:
+  \begin{minted}{tex}
+\begin{verbatim}
+  ...
+\end{verbatim}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Heb ik dit nodig?}
+
+  Bijvoorbeeld output van~\textsc{Matlab}, R. Voor code kan het ook gebruikt worden maar beter is om hier~\verb|listings| of~\verb|minted| te gebruiken.
+
+  \pause\begin{exampleblock}{Laatste les}
+    Is er hier interesse voor? Momenteel is er hier iets kleins over voorbereid.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Abstract}
+
+  Een korte inhoud geven doe je simpelweg via
+\begin{minted}{tex}
+\begin{abstract}
+  korte inhoud
+\end{abstract}
+\end{minted}
+\end{frame}

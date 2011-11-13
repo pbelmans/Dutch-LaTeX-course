@@ -1,0 +1,70 @@
+\begin{frame}
+  \frametitle{Disclaimer}
+
+  Ik ben geen chemicus, bijgevolg is mijn ervaring eerder beperkt (om niet te zeggen onbestaande). Als ik onzin uitkraam, gelieve me daar op te wijzen.
+
+  Deze slides zijn dus ook maar een korte introductie.
+\end{frame}
+
+\subsection{Chemische formules}
+\begin{frame}[fragile]
+  \frametitle{\package{mhchem}}
+
+  \begin{minted}{tex}
+\ce{H2O}, \ce{[AgCl2]-}, \ce{1/2H2O}, \ce{^{227}_{90}Th+}
+  \end{minted}
+  resulteert in \ce{H2O}, \ce{[AgCl2]-}, \ce{1/2H2O}, \ce{^{227}_{90}Th+}
+  \begin{minted}{tex}
+\ce{CO2 + C -> 2CO}, \ce{CO2 + C ->[\alpha][\beta] 2CO}
+  \end{minted}
+  resulteert in \ce{CO2 + C -> 2CO}, \ce{CO2 + C ->[\alpha][\beta] 2CO}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Groter voorbeeld}
+
+  \begin{minted}{tex}
+\ce{Zn^2+
+  <=>[\ce{+ 2OH-}][\ce{+ 2H+}]
+  $\underset{\text{zinkaation}}{\ce{Zn(OH)2 v}}$
+  <=>C[+2OH-][{+ 2H+}]
+  $\underset{\text{tetrahydroxozinkaation}}{\cf{[Zn(OH)4]^2-}}$
+}
+  \end{minted}
+\ce{Zn^2+
+  <=>[\ce{+ 2OH-}][\ce{+ 2H+}]
+  $\underset{\text{zinkaation}}{\ce{Zn(OH)2 v}}$
+  <=>C[+2OH-][{+ 2H+}]
+  $\underset{\text{tetrahydroxozinkaation}}{\cf{[Zn(OH)4]^2-}}$
+}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Werking}
+
+  Er is een \verb|\ce{}|-commando dat op een heel natuurlijke wijze chemische reacties interpreteert. Je hoeft geen math mode te gebruiken maar voor bijvoorbeeld sub- en superscripts is gebeurt dit wel standaard (dus gebruik \verb|\text{}| indien nodig).
+
+  Om chemische formules binnen wiskundeomgevingen te gebruiken: \verb|\cee{}|.
+
+  \begin{minted}{tex}
+\usepackage[version=3]{mhchem}
+  \end{minted}
+\end{frame}
+
+
+\subsection{Chemische structuren}
+\begin{frame}
+  \frametitle{Chemische structuren}
+
+  Een paar mogelijkheden: \package{xymtex}, \package{ppchtex} of \package{tikz}. En er is \package{chemstyle} voor de consistentie.
+
+  Een andere mogelijkheid: tekenen in pakweg ChemDraw en exporteren naar \texttt{pdf}.
+\end{frame}
+
+
+\subsection{SI-eenheden}
+\begin{frame}
+  \frametitle{\package{siunitx}}
+
+  De meest recente package voor consistent werken met eenheden. Ik weet niet of deze werkt op de pc's hier, maar we bekijken de documentatie eens.
+\end{frame}

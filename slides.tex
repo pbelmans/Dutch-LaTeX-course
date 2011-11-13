@@ -1,0 +1,128 @@
+\documentclass{beamer}
+\usepackage{amsfonts}
+\usepackage[dutch]{babel}
+\usepackage{booktabs}
+\usepackage{dcolumn}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{metalogo}
+\usepackage[version=3]{mhchem}
+\usepackage{minted}
+\usepackage{showexpl}
+\usepackage{textcomp}
+\usepackage{verbatim}
+\usepackage{xfrac}
+
+\usetheme{UniversiteitAntwerpen}
+
+\hypersetup{colorlinks, linkcolor=uablue, citecolor=uablue, urlcolor=uablue!80!white}
+
+\AtBeginLecture{
+  \begin{frame}
+    \frametitle{De les van vandaag}
+    \insertlecture
+  \end{frame}
+}
+\AtBeginSection[]
+{
+  \begin{frame}
+	  \frametitle{Overzicht}
+    \setcounter{tocdepth}{1}
+	  \tableofcontents[currentsection]
+  \end{frame}
+}
+\AtBeginSubsection[]
+{
+  \begin{frame}
+	  \frametitle{Overzicht}
+    \setcounter{tocdepth}{2}
+	  \tableofcontents[sectionstyle=show/hide, subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+\setbeamerfont{description item}{series=\bfseries}
+
+\newcommand\package[1]{\href{http://ctan.org/pkg/#1}{\textrm{#1}}}
+\newcommand\cpp{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+
+\definecolor{uagreen}{RGB}{0,126,17}
+
+\usepackage{tgpagella}
+
+\usemintedstyle{ua}
+
+\lstset{numbers=none,basicstyle=\ttfamily}
+
+\title{\LaTeX}
+\date{\today}
+\author{\textsc{ACM Student Chapter} \\ Pieter Belmans}
+
+\includeonlylecture{les-1}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\part{Les 1}
+\lecture
+{Na deze les weet je in grote lijnen hoe \LaTeX\ werkt en kan je al een volwaardige basistekst schrijven.}
+{les-1}
+\section{Inleiding}
+\input{section-intro}
+\section{Software}
+\input{section-software}
+\section{Wat u moet weten}
+\input{section-must-know}
+\section{Tekstopmaak}
+\input{section-text}
+
+\begin{frame}
+  \frametitle{Opgave}
+
+  Met wat we geleerd hebben moet het mogelijk zijn om de ``opgave'' die ik nu uitdeel na te maken. Aarzel niet om vragen te stellen. Het is mogelijk om de opgave \emph{exact} na te maken, door wat ik de beste manier om te \TeX'en vind toe te passen en die jullie gewoon moeten leren wat mij betreft :).
+\end{frame}
+
+
+\part{Les 2}
+\lecture
+{We leren hoe we een bibliografie toevoegen aan onze tekst, hoe we figuren en tabellen gebruiken en indien er nog tijd is hoe we werken met lettertypes en groottes.}
+{les-2}
+\section{Bibliografie\"en}
+\input{section-bibliography}
+\section{Tabellen en afbeeldingen}
+\input{section-tables-and-figures}
+\section{Uitzicht}
+\input{section-layout}
+
+
+\part{Les 3}
+\lecture
+{We leren wiskunde en chemie typesetten.}
+{les-3}
+\section{Wiskunde}
+\input{section-math}
+\section{Chemie}
+\input{section-chemistry}
+
+
+\part{Les 4}
+\lecture
+{We leren code typesetten en presentaties maken.
+
+Voor de liefhebbers is er vandaag geen opdracht, maar meer interactiviteit tijdens de les.}
+{les-4}
+\section{Code}
+\input{section-code}
+\section{\texttt{beamer}}
+\input{section-beamer}
+
+\begin{frame}
+  \frametitle{Evaluatie}
+
+  Opmerkingen? Wat was er goed/slecht?
+\end{frame}
+
+
+
+
+\end{document}

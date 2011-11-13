@@ -1,0 +1,24 @@
+\documentclass[a4paper,11pt]{article}
+\usepackage{listing}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\lstset{
+  language=tex,
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{red},
+  commentstyle=\color{green},
+  stringstyle=\color{blue},
+  caption=\texttt{\lstname}
+}
+
+\begin{document}
+\begin{listing}
+  \lstinputlisting[language=c++]{main.cpp}
+\end{listing}
+\begin{listing}
+  \lstinputlisting[language=c++,caption=]{main.cpp}
+  \caption{Mijn caption in de float zelf}
+\end{listing}
+\end{document}

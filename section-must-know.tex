@@ -1,0 +1,185 @@
+\begin{frame}
+  \frametitle{Witruimte}
+  Witruimte gedraagt zich \emph{niet} zoals in pakweg Microsoft Word. Enkele regels:
+  \begin{itemize}
+  	\item spaties, tabs en regeleindes zijn allemaal equivalent met \'e\'en spatie;
+  	\item opeenvolgende witruimte wordt samengevoegd;
+  	\item twee regeleindes na elkaar vormen = nieuwe alinea;
+  	\item er zijn (uiteraard) uitzonderingen (zie~\texttt{verbatim}).
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Speciale karakters}
+  Zoals in andere programmeertalen zijn er bepaalde symbolen met een bepaalde betekenis: \verb|$ & % # _ { } ~ ^ \|
+
+  De belangrijkste voor het moment zijn: \verb|\|, \verb|{|, \verb|}| en \verb|%|, voor commando's en commentaar.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Speciale karakters: voorbeeld}
+
+  \begin{minted}{tex}
+\section{Voorbeeld}
+Dit is een voorbeeldzin. % iets interessants schrijven
+
+Dit is een~\emph{tweede} zin.
+% commentaar op een nieuwe regel, \emph{test} doet niets
+  \end{minted}
+
+  \begin{exampleblock}{Aan de slag}
+    Werk verder in je testdocument (tussen \texttt{\textcolor{uagreen}{\textbackslash begin}\{document\}} en \texttt{\textcolor{uagreen}{\textbackslash end}\{document\}}) en druk op \texttt{F1} als je klaar bent.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Escaping}
+
+  Wat als we toch zo'n speciale karakters wensen te gebruiken? Door ze te prefixen met een~\verb|\|:
+
+  \begin{tabular}[]{cc|cc|cc|cc}
+    \verb|\$| & \$ & 
+    \verb|\&| & \& &
+    \verb|\%| & \% &
+    \verb|\#| & \# \\ \\
+    \verb|\_| & \_ &
+    \verb|\{| & \{ &
+    \verb|\}| & \}
+  \end{tabular}
+
+  En~\textbackslash~dan? Hiervoor gebruik je~\verb|\textbackslash|, je zou geneigd zijn om \verb|\\| te gebruiken maar dit heeft een speciale betekenis.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Commando's}
+
+  \begin{itemize}
+	  \item begint met een backslash, gevolgd door een naam (enkel letters!);
+	  \item hoofdlettergevoelig;
+	  \item wordt be\"eindigd door een spatie (volgende tekst wordt er meteen achter geplaatst);
+	  \item kan parameters meekrijgen (later meer).
+  \end{itemize}
+
+  \begin{LTXexample}[pos=r]
+\LaTeX is leuk \\
+\LaTeX~is leuk \\
+\LaTeX{} is leuk
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Terug naar het testbestand}
+  Dit zou je nog steeds ergens opgeslagen moeten hebben (eventueel terug leegmaken). Zo nee mag je het nogmaals overtypen.
+  \inputminted{latex}{test-1.tex}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nu wat uitgebreider}
+  \inputminted{latex}{test-2.tex}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Structuur}
+
+  \begin{description}
+	\item[preamble] bevat de configuratie van het bestand, zie je niet rechtstreeks in de output
+	  \begin{itemize}
+      \item \texttt{\textcolor{uagreen}{\textbackslash documentclass}\{\}},
+	  	\item packages,
+	  	\item definities van commando's.
+	  \end{itemize}
+    \item[document] alles tussen~\texttt{\textcolor{uagreen}{\textbackslash begin}\{document\}} en~\texttt{\textcolor{uagreen}{\textbackslash end}\{document\}}, de eigenlijke tekst
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\texttt{\textbackslash documentclass\{\}}}
+
+  \textcolor{uagreen}{\texttt{\textbackslash documentclass}}\{$\langle\textsl{class}\rangle$\}
+
+  beschrijft het~\emph{soort} document, in \LaTeX~zijn (onder andere) voorzien:
+  \begin{description}
+	  \item[\texttt{article}] korte verslagen, artikels
+	  \item[\texttt{report}] langere verslagen, cursussen
+	  \item[\texttt{letter}] brieven (automatische hoofdingen, handtekeningen, etc.)
+  \end{description}
+
+  maar er zijn ook nog (onder meer)
+  \begin{description}
+	  \item[\texttt{memoir}] veel meer controle over layout
+	  \item[\texttt{beamer}] voor slides (u ziet hier het resultaat)
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\textbackslash documentclass\{\}}: opties}
+
+  \textcolor{uagreen}{\texttt{\textbackslash documentclass}}[$\langle\textsl{opties}\rangle$]\{$\langle\textsl{class}\rangle$\}
+
+  \begin{description}
+	  \item[\texttt{$\langle n\rangle$pt}] lettergrootte, default is~\texttt{10pt}, $n\in\left\{ 10,11,12 \right\}$
+	  \item[\texttt{a4paper}] papierformaat, default is het Amerikaanse~\texttt{letterpaper}
+	  \item[\texttt{titlepage}] zorgt voor een titelpagina, \texttt{article} default niet, \texttt{report} en~\texttt{book} wel, ook~\texttt{notitlepage}
+	  \item[\ldots] 
+  \end{description}
+
+  Zie~\texttt{lshort-dutch} voor meer.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Uitgebreid voorbeeld met correcte opties}
+  \inputminted{latex}{test-3.tex}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Packages}
+  Het wiel heruitvinden is nergens voor nodig, daarom zijn er packages die specifieke problemen oplossen.
+
+  \textcolor{uagreen}{\texttt{\textbackslash usepackage}}\verb|[|$\langle\textsl{opties}\rangle$\verb|]{|$\langle\textsl{naam}\rangle$\verb|}|
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeelden van packages}
+
+  \begin{description}
+	\item[\texttt{babel}] bevat informatie over talen, meestal te gebruiken met optie~\texttt{[dutch]}
+	\item[\texttt{amsmath}] maakt wiskunde schrijven makkelijker
+	\item[\texttt{amsfonts}] wiskundige lettertypes: $\mathbb{R}$, $\mathfrak{m}$
+	\item[\texttt{amssymb}] symbolen die met wiskunde te maken hebben (zie ook~\url{http://ctan.org/tex-archive/info/symbols/comprehensive}): $\varinjlim$, $\hookrightarrow$, \ldots
+    \item[\texttt{graphicx}] werken met afbeeldingen
+    \item[] \ldots
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Gebruik van packages}
+
+  \begin{alertblock}{Lawinegevaar}
+    Gebruik enkel packages in je document die je daadwerkelijk nodig hebt, kopieer niet telkens dezelfde lijst om er dan nog aan toe te voegen. Je krijgt op den duur conflicten.
+  \end{alertblock}
+
+  Packages hebben vaak \emph{erg} goede documentatie, gebruik deze:
+
+  \texttt{http://ctan.org/pkg/$\langle\textsl{naam}\rangle$}
+  \pause
+  \begin{exampleblock}{Oefening}
+    Probeer dit voor \verb|amsmath|, \verb|pgf| en \verb|thmtools|.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Eigenlijke document}
+
+  \begin{minted}{latex}
+\begin{document}
+% alles hiertussen vormt je document
+\end{document}
+  \end{minted}
+
+  zal vaak een~\texttt{\textcolor{uagreen}{\textbackslash maketitle}} bevatten, de rest komt later
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Ons afgewerkte voorbeeld}
+  \inputminted{latex}{test-4.tex}
+\end{frame}

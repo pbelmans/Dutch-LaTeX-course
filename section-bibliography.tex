@@ -1,0 +1,258 @@
+\subsection{Bib\TeX}
+\begin{frame}
+  \frametitle{Bibliografiebeheer}
+
+  Een van d\'e redenen om~\LaTeX\ te gebruiken is het goede beheer van referenties en bibliografie\"en. We gebruiken hiervoor~Bib\TeX. Dit is een extern programma dat output genereert die we kunnen gebruiken in~\LaTeX.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Concept}
+
+  \begin{itemize}
+	\item \'e\'en (of meerdere) bestanden waarin bibliografie\-informatie staat, onafhankelijk van de weergave;
+    \item citeren gebeurt zoals we met~\texttt{\textbackslash label} en \texttt{\textbackslash ref} werkten, maar nu met~\texttt{\textbackslash cite};
+	\item de layout van de bibliografie en de citaten is aanpasbaar en onafhankelijk van hoe we onze bibliografie hebben opgeslagen.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\texttt{.bib} bestand}
+
+  \begin{enumerate}
+	\item bevat (delen van) de bibliografie;
+	\item volgt een vaste structuur:
+
+	  \texttt{@\textsl{$\langle$entry-type$\rangle$}\{\textsl{$\langle$key$\rangle$},\\
+	  \ \ \textsl{$\langle$field-1$\rangle$} = \textsl{$\langle$value-1$\rangle$}, \\
+	  \ \ \ldots \\
+	  \ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$} \\
+	  \}}
+	  
+	  en we zullen deze nu invullen.
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Entry types}
+
+  Bepaalt wat voor type het document heeft:
+  \begin{itemize}
+	\item \texttt{article}
+	\item \texttt{book}
+	\item \texttt{inbook}: een specifiek deel van een boek
+	\item \texttt{misc}
+	\item \texttt{proceedings}
+	\item \ldots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bib\TeX\ voorbeeld}
+
+\texttt{@book\{\textsl{$\langle$key$\rangle$},\\
+\ \ \textsl{$\langle$field-1$\rangle$} = \textsl{$\langle$value-1$\rangle$}, \\
+\ \ \ldots \\
+\ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$} \\
+\}}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Keys}
+
+  Zoals met~\texttt{\textbackslash label\{\textsl{$\langle$key$\rangle$}\}} hebben we een unieke key nodig. Je kan deze opbouwen op basis van de auteur, het jaar van publicatie, de titel, \ldots\ Zorg dat het voor jou duidelijk is.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bib\TeX\ voorbeeld}
+
+\texttt{{@}book\{formalized-music,\\
+\ \ \textsl{$\langle$field-1$\rangle$} = \textsl{$\langle$value-1$\rangle$}, \\
+\ \ \ldots \\
+\ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$} \\
+\}}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Velden en waarden}
+
+  Elke entry bevat een aantal keys (of velden) met geassocieerde waarden, \emph{afhankelijk van het type}. Sommige zijn verplicht, anderen zijn optioneel. Enkele voorbeelden:
+  \begin{itemize}
+	\item \texttt{author}
+	\item \texttt{title}
+	\item \texttt{year}
+	\item \ldots
+  \end{itemize}
+  \verb|author = "Iannis Xenakis"| \\
+  \verb|title = "Formalized Music"|
+\end{frame}
+
+\begin{frame}
+  \frametitle{Types en velden}
+
+  \begin{description}
+	\item[\texttt{article}] verplicht: \texttt{author}, \texttt{title}, \texttt{journal}, \texttt{year} \\
+	  optioneel: \texttt{volume}, \texttt{number}, \texttt{pages}, \texttt{month}, \texttt{note}, \texttt{key}
+	\item[\texttt{book}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{publisher}, \texttt{year} \\
+	  optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
+	\item[\texttt{inbook}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{chapter} of~\texttt{pages}, \texttt{publisher}, \texttt{year} \\
+	  optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Types en velden (2)}
+
+  \begin{description}[\texttt{proceedings}]
+	\item[\texttt{misc}] verplicht: geen \\
+	  optioneel: \texttt{author}, \texttt{title}, \texttt{howpublished}, \texttt{month}, \texttt{year}, \texttt{note}, \texttt{key}
+	\item[\texttt{proceedings}] verplicht: \texttt{title}, \texttt{year} \\
+	  optioneel: \texttt{editor}, \texttt{publisher}, \texttt{organization}, \texttt{address}, \texttt{month}, \texttt{note}, \texttt{key}
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Een overzicht graag}
+
+  \small
+  \url{http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node6.html}, \url{http://newton.ex.ac.uk/tex/pack/bibtex/btxdoc/node7.html}
+  {\ } \\
+  {\ } \\
+  \url{http://en.wikibooks.org/wiki/LaTeX/Bibliography_Management}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Bib\TeX\ voorbeeld}
+
+  \begin{minted}{tex}
+@book{formalized-music,
+  author = {Iannis Xenakis},
+  title = {Formalized Music}
+  publisher = {Pendragon Press},
+  year = 2001,
+  edition = {second},
+  isbn = "978-1576470794"
+}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{En websites?}
+
+  In Bib\TeX\ geen concrete oplossing, wel een pseudo-oplossing:
+  \begin{minted}{tex}
+@misc{wiki:aardappel,
+  author = {Wikipedia}
+  title = {Aardappel},
+  year = 2011,
+  howpublished =
+    {\url{http://nl.wikipedia.org/wiki/Aardappel}}
+}
+  \end{minted}
+  Vergeet geen~\verb|\usepackage{url}| of (bij voorkeur) \verb|\usepackage{hyperref}|!
+\end{frame}
+
+\subsection{\LaTeX}
+\begin{frame}[fragile]
+  \frametitle{En nu?}
+
+  Nu vertellen we~\LaTeX\ dat we met een bibliografie werken:
+  \begin{minted}{tex}
+\bibliographystyle{plain}
+\bibliography{file-1,file-2}
+\end{document}
+  \end{minted}
+  \begin{alertblock}{Spaties}
+	Geen spatie tussen opeenvolgende bestanden gebruiken. Extensies zijn ook niet nodig.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{En we citeren}
+
+  \begin{minted}{tex}
+	Dit is een citaat, zie~\cite{wiki:bibtex}.
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Werkwijze}
+
+  Herinner je het two-pass systeem voor verwijzingen? Nu hebben we een four-pass:
+  \begin{verbatim}
+pdflatex document.tex
+bibtex document.aux
+pdflatex document.tex
+pdflatex document.tex\end{verbatim}
+We proberen dit in \TeX maker.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Na de eerste stap}
+  \begin{verbatim}
+LaTeX Warning: Citation `lamport94' on page 1 undefined
+  on input line 21.
+...
+LaTeX Warning: There were undefined references.\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Na de tweede stap}
+  \begin{verbatim}
+This is BibTeX, Version 0.99c (Web2C 7.3.1)
+The top-level auxiliary file: latex_source_code.aux
+The style file: plain.bst
+Database file #1: sample.bib\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Na de derde stap}
+  \begin{verbatim}
+LaTeX Warning: Label(s) may have changed.
+Rerun to get cross-references right. 
+  \end{verbatim}
+\end{frame}
+
+\begin{frame}
+  \frametitle{In \TeX maker}
+
+  Tijd voor experiment.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Citeren in je eigen taal}
+
+  \begin{minted}{tex}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{dutch}
+
+\bibliographystyle{babplain}
+\bibliography{sample}
+  \end{minted}
+  Dus gebruik de juiste style.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Uitgewerkt voorbeeld}
+
+  \footnotesize
+  \inputminted{tex}{bib-example.tex}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Uitgewerkt voorbeeld}
+
+  \inputminted{tex}{bib-example.bib}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Mijn excuses}
+
+  De package \package{babelbib} bevat nog bugs, ontdekte ik bij het maken van deze slides. Ik zal de maker contacteren om deze op te lossen. Tot dan moet je bijvoorbeeld je maanden meteen correct schrijven en editienummers voluit schrijven.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Hack}
+
+  \inputminted[firstline=9,lastline=19]{tex}{bib-example-extended.tex}
+\end{frame}

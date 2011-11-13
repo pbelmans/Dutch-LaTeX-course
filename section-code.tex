@@ -1,0 +1,279 @@
+\begin{frame}
+  \frametitle{Waarom code typesetten?}
+
+  Ik denk dat zowat elke wetenschapsstudent wel eens met code in aanraking komt: Matlab, R, \LaTeX, \cpp, \ldots
+
+  Net zoals we \LaTeX\ schrijven in een editor met mooie kleurtjes en dergelijke kan het handig zijn om dit in je document ook te hebben:
+  \begin{itemize}
+    \item regelnummering;
+    \item syntax highlighting;
+    \item een fixed-width lettertype;
+    \item automatisch code uit files halen;
+    \item \ldots
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeeld}
+
+\begin{minted}[fontsize=\small,linenos=true,mathescape=true,frame=lines]{cpp}
+string title = "Dit is een string";
+/*
+Gedefinieerd als $\pi=\lim_{n\rightarrow\infty}\frac{P_n}{d}$ met $P$ de omtrek
+van een $n$-zijdige regelmatige veelhoek
+ingeschreven in een cirkel met straal $d$.
+*/
+const double pi = 3.1415926235
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{De mogelijkheden}
+
+  \begin{enumerate}
+    \item \verb|verbatim| gebruiken;
+    \item \package{listings};
+    \item \package{minted}.
+  \end{enumerate}
+
+  Niet helemaal hetzelfde of nog niet door mij gebruikt:
+  \begin{itemize}
+    \item \package{algorithmic} voor pseudocode;
+    \item \package{verbatim} uitbreiding op \verb|verbatim|
+    \item \package{fancyvrb} vooral omgevingen om code in te plaatsen, met kaders en dergelijke (wordt intern gebruikt)
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{verbatim}}
+
+  Dit kennen we op zich al: \texttt{\textbackslash verb|$\langle$\textsl{tekst}$\rangle$|}.
+
+  Maar er is ook:
+  \begin{LTXexample}
+\begin{verbatim}
+dit is code
+nieuwregels tellen
+    spaties ook
+\end{verbatim}
+  \end{LTXexample}
+
+  \begin{LTXexample}
+\begin{verbatim*}
+    spaties zichtbaar
+\end{verbatim*}
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Voordelen}
+
+  \begin{itemize}
+    \item meteen te gebruiken, geen packages nodig;
+    \item goed voor korte code of inline code;
+    \item gemakkelijk.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Nadelen}
+
+  \begin{itemize}
+    \item geen van de leuke dingen die we konden doen is mogelijk:
+      \begin{itemize}
+        \item syntax highlighting;
+        \item regelnummers;
+        \item files inputten;
+        \item \LaTeX\ in commentaar.
+      \end{itemize}
+    \item geen line wrap.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\package{listings}}
+
+  De oplossing voor al onze problemen.
+  \begin{minted}{tex}
+\usepackage{listings}
+
+\begin{lstlisting}
+  % commentaar
+  we zullen eens \emph{proberen}
+\end{lstlisting}
+\end{minted}
+
+\begin{lstlisting}
+% commentaar
+we zullen eens \emph{proberen}
+\end{lstlisting}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Enkele conclusies}
+
+  \begin{itemize}
+    \item het lettertype is nog niet wat we willen;
+    \item geen kleurtjes;
+    \item geen regelnummering;
+  \end{itemize}
+
+  We moeten nog opties instellen:
+  \texttt{\textbackslash lstset\{$\langle$\textsl{opties$=$waarden}$\rangle$\}}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Opties}
+
+  \begin{description}[\texttt{numberstyle}]
+    \item[\texttt{language}] de taal van de code, zie volgende slide voor ondersteunde talen;
+    \item[\texttt{basicstyle}] opmaak die voor alle code geldt, we willen altijd \verb|basicstyle=\ttfamily|, of bijvoorbeeld \verb|basicstyle=\ttfamily\small|;
+    \item[\texttt{numbers}] regelnummering;
+    \item[\texttt{numberstyle}] opmaak voor regelnummers, bijvoorbeeld \verb|numberstyle=\footnotesize|;
+    \item[\texttt{stepnumber}] sprongen in de regelnummers, bijvoorbeeld \verb|\stepnumber=5|;
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Talen}
+
+  \small
+  \begin{tabular}{lll}
+    ABAP & IDL & Plasm           \\
+    ACSL & inform & POV         \\
+    Ada & Java & Prolog         \\
+    Algol & JVMIS & Promela     \\
+    Ant & ksh & Python          \\
+    Assembler2 & Lisp & R       \\
+    Awk & Logo & Reduce         \\
+    bash & make & Rexx          \\
+    Basic2 & Mathematica1 & RSL \\
+    C & Matlab & Ruby           \\
+    C++ & Mercury & S           \\
+    Caml & MetaPost & SAS       \\
+    Clean & Miranda & Scilab    \\
+  \end{tabular}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Talen}
+
+  \small
+  \begin{tabular}{lll}
+    Cobol & Mizar & sh          \\
+    Comal & ML & SHELXL         \\
+    csh & Modula-2 & Simula     \\
+    Delphi & MuPAD & SQL        \\
+    Eiffel & NASTRAN & tcl      \\
+    Elan & Oberon-2 & TeX       \\
+    erlang & OCL & VBScript     \\
+    Euphoria & Octave & Verilog \\
+    Fortran & Oz & VHDL         \\
+    GCL & Pascal & VRML         \\
+    Gnuplot & Perl & XML        \\
+    Haskell & PHP & XSLT        \\
+    HTML & PL/I
+  \end{tabular}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Meer opties}
+
+  \begin{description}
+    \item[\texttt{numbers}] positie van de regelnummers;
+    \item[\texttt{showspaces}] zoals \verb!\verb*||!;
+    \item[\texttt{showstringspaces}] bovenstaande, specifiek voor strings;
+    \item[\texttt{showtabs}] bovenstaande, specifiek voor tabs;
+    \item[\texttt{breaklines}] line breaks (dit zal je willen, dus \verb|breaklines=true|).
+  \end{description}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Syntax highlighting}
+
+  \package{listings} is lui en doet uit zichzelf niks, daarom
+  \begin{minted}{tex}
+\lstset{%
+  basicstyle=\ttfamily\small,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{red},
+  commentstyle=\color{green},
+  stringstyle=\color{blue}
+}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Float}
+
+  Net zoals we tabellen en afbeeldingen in floats plaatsen zal dit voor code vaak ook een goed idee zijn, we gebruiken hiervoor de package \package{listing}:
+  \small
+  \begin{minted}{tex}
+\usepackage{listing}
+
+\listoflistings
+\begin{listing}
+  \lstinputlisting[language=cpp]{main.cpp}
+  \caption{Een voorbeeldlisting}
+  \label{listing:main-cpp}
+\end{listing}
+\end{minted}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Of rechtstreeks met \package{listings}}
+
+  We bestuderen het hoofdstuk over captions in de manual. Dit is 4.9.
+
+  \begin{exampleblock}{Bekentenis}
+    Bij het maken van deze slides wist ik niet dat dit allemaal mogelijk was, ik gebruikte tot voor kort dus altijd de vorige slide als oplossing, maar ik moet mezelf aanleren van deze techniek te gebruiken.
+  \end{exampleblock}
+
+  \begin{alertblock}{Opgelet}
+    Dit zijn geen echte floats! Maar we kunnen ze natuurlijk wrappen in floats, zonder captions te gebruiken.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}
+  \frametitle{\package{minted}}
+
+  State of the art, maakt gebruik van een externe library (Pygments).
+
+  Voordelen:
+  \small
+  \begin{itemize}
+    \item enorm flexibele highlighting;
+    \item veel betere lexers;
+    \item Unicode-ondersteuning;
+  \end{itemize}
+
+  \normalsize Nadelen:
+  \small
+  \begin{itemize}
+    \item geen line wrap;
+    \item geen page breaks;
+    \item niet bijster gemakkelijk
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Oefening}
+
+\lstset{
+  basicstyle=\ttfamily\tiny,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{red},
+  commentstyle=\color{green},
+  stringstyle=\color{blue},
+  caption=\ttfamily\lstname
+}
+
+\scriptsize
+\lstinputlisting[language=c++]{main.cpp}
+
+\begin{listing}[H]
+  \lstinputlisting[language=c++,caption=]{main.cpp}
+  \caption{Nu de caption in de float zelf}
+\end{listing}
+\end{frame}

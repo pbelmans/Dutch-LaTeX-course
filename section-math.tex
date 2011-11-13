@@ -1,0 +1,475 @@
+\begin{frame}[fragile]
+  \frametitle{Geschiedenis}
+
+  Een van \emph{de} redenen om \TeX\ te ontwikkelen: tot de jaren '80 was het onmogelijk om zelf goed wiskunde te typesetten.
+
+  De American Mathematical Society heeft een hoop werk geleverd in de jaren '90, met als resultaat:
+  \begin{minted}{tex}
+\usepackage{amsmath}
+  \end{minted}
+
+  \begin{exampleblock}{Andere omgevingen}
+    Ik ga enkel \package{amsmath} omgevingen gebruiken, er zijn ook \TeX\ en \LaTeX-varianten maar deze zijn niet per se nodig.
+  \end{exampleblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Math mode}
+
+  Normaal gezien houdt \LaTeX\ zich bezig met het typesetten van doorlopende tekst (dus in \emph{text mode}), omdat wiskunde zo'n fundamenteel andere aanpak vereist moetten we \LaTeX\ vertellen dat we naar \emph{math mode} willen.
+  
+  \inputminted{tex}{math-example.tex}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Het resultaat}
+
+  \input{math-example.tex}
+
+  De eerste is \emph{inline} (of in \emph{text style}), de andere is in \emph{display style}.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Spatiegebruik en de rol van letters}
+
+  \begin{enumerate}
+    \item spaties en regeleindes worden \emph{volledig} genegeerd (waar mogelijk), witruimte in formules komt door de semantiek van symbolen of handmatig;
+    \item gewone letters zijn variabelen en worden dus in italic geplaatst.
+      \begin{LTXexample}
+$dit klopt niet$ \\
+$f_{\text{int}}$
+      \end{LTXexample}
+  \end{enumerate}
+\end{frame}
+
+\subsection{Binnen math mode}
+\begin{frame}[fragile]
+  \frametitle{Grieks alfabet}
+
+  Heel simpel:\\
+  \texttt{\textbackslash$\langle$\textsl{letter}$\rangle$} en \texttt{\textbackslash$\langle$\textsl{Letter}$\rangle$}
+
+  \begin{LTXexample}
+$\alpha\beta\Gamma\Delta$
+  \end{LTXexample}
+
+  \begin{alertblock}{A tiny catch}
+    Sommige Griekse hoofdletters zijn hetzelfde als de Latijnse, deze hebben dus geen aparte letter. Er is dus geen \verb|\Alpha| of \verb|\Chi|.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Varianten}
+
+  Voor de liefhebber, een paar varianten (de drie eerste zijn frequent, de rest niet):
+
+  \begin{LTXexample}
+$\epsilon\,\varepsilon$ \\
+$\theta\,\vartheta$ \\
+$\phi\,\varphi$ \\
+$\pi,\varpi$ \\
+$\rho\,\varrho$ \\
+$\sigma\,\varsigma$
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Operators}
+
+  Ook wel functies met een naam. Zoals daar zijn $\cos$, $\sin$, $\log$, \ldots
+
+  \begin{LTXexample}
+$\sin(\pi)=0$,~$\tan(\pi/2)=1$.
+  \end{LTXexample}
+
+  De meest voor de hand liggende zijn voor gedefinieerd, anders: \\
+  \texttt{\textbackslash DeclareMathOperator\textbackslash\textsl{$\langle$commandonaam$\rangle$}\{\textsl{$\langle$naam$\rangle$}\}}
+  \begin{minted}{tex}
+\DeclareMathOperator\characteristic{char}
+\DeclareMathOperator\trace{tr}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Subscript mogelijk maken}
+
+  \begin{LTXexample}
+\begin{equation}
+  \lim_{x\rightarrow 0}
+  \frac{\sin x}{x}
+\end{equation}
+  \end{LTXexample}
+
+  \texttt{\textbackslash DeclareMathOperator\textbackslash\textsl{$\langle$commandonaam$\rangle$}\{\textsl{$\langle$naam$\rangle$}\}}
+  \begin{minted}{tex}
+\DeclareMathOperator*{\argmax}{arg\,max} 
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Sub- en superscript}
+
+  Daarom zijn \verb|_| en \verb|^| dus speciale karakters:
+  \begin{LTXexample}
+$F_{n+2}=F_{n+1}+F_n$ \\
+$O(n^{n^n})$ \\
+$f|_{[0,1]}$ \\
+$\lim_{x\rightarrow 0}$
+\begin{equation}
+  \int_0^x f'(x)\mathrm{d}x
+\end{equation}
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Breuken en binomiaalco\"effici\"enten}
+
+  \texttt{\textbackslash frac\{$\langle$\textsl{p}$\rangle$\}\{$\langle$\textsl{q}$\rangle$\}} en \texttt{\textbackslash binom\{$\langle$\textsl{p}$\rangle$\}\{$\langle$\textsl{q}$\rangle$\}}
+
+  \begin{LTXexample}
+$\frac{\sin(x)}{\cos(x)}$ \\
+$\binom{n}{k}$ \\
+$\displaystyle\binom{n}{k}$
+\begin{equation}
+  \frac{\sin(x)}{\cos(x)}
+\end{equation}
+  \end{LTXexample}
+  Of met~\package{xfrac}: $\sfrac{1}{2}$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Wortels}
+
+  \begin{LTXexample}
+$\sqrt{2}$,~$\sqrt[3]{n}$
+\begin{equation}
+  \sqrt{\frac{3}{5}}
+\end{equation}
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Sommen en aanverwanten}
+
+\begin{LTXexample}
+$\sum_{k=1}^n k^2$ \\
+\begin{equation}
+  \sum_{k=1}^n k^2
+  \bigotimes \coprod
+  \oint \iiint
+\end{equation}
+\end{LTXexample}
+
+\begin{alertblock}{\texttt{\textbackslash big}-varianten}
+  Leer op de goede momenten \verb|\bigcup| gebruiken. Want $\bigcup_{i=1}^n U_i\neq \cup_{i=1}^n U_i$.
+\end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\textbackslash substack\{\}}}
+
+  \begin{minted}{tex}
+\begin{equation}
+  \sum_{\substack{0<k<m \\ 0<l<n}} k+l
+\end{equation}
+  \end{minted}
+\begin{equation}
+  \sum_{\substack{0<k<m \\ 0<l<n}} k+l
+\end{equation}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Haakjes}
+
+  \begin{LTXexample}
+$(\cdot) \, [\cdot] \,$
+$\{\cdot\}\, |\cdot| \,$
+$\|\cdot\| \,$
+$\langle\cdot\rangle \,$
+$\lfloor\cdot\rfloor \,$
+$\lceil\cdot\rceil$
+  \end{LTXexample}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Automatisch aanpassen}
+
+  \begin{minted}{tex}
+\begin{gather}
+  \left( \frac{1}{2} \right) \\
+  \left\{ x\in\mathbb{Q} \middle| x<\frac{1}{2} \right\}
+\end{gather}
+\end{minted}
+\begin{gather}
+  \left( \frac{1}{2} \right) \\
+  \left\{ x\in\mathbb{Q} \,\middle|\, x<\frac{1}{2} \right\}
+\end{gather}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Matrices}
+
+  \begin{minted}{tex}
+\begin{gather}
+  \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} \quad
+  \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+\end{gather}
+  \end{minted}
+\begin{gather}
+  \begin{matrix} 1 & 0 \\ 0 & 1 \end{matrix} \quad
+  \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
+\end{gather}
+
+Maar er zijn ook nog \verb|bmatrix|, \verb|Bmatrix|, \verb|vmatrix| en \verb|Vmatrix|. Ook is er telkens een \texttt{\textbackslash\textsl{$\langle$d$\rangle$}matrix*}-variant.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Grote matrices}
+  
+  \footnotesize
+  \begin{minted}{tex}
+\begin{gather}
+  A_{m,n} =
+    \begin{pmatrix}
+      a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+      a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+    \end{pmatrix} 
+\end{gather}
+  \end{minted}
+\begin{gather}
+  A_{m,n} =
+    \begin{pmatrix}
+      a_{1,1} & a_{1,2} & \cdots & a_{1,n} \\
+      a_{2,1} & a_{2,2} & \cdots & a_{2,n} \\
+      \vdots  & \vdots  & \ddots & \vdots  \\
+      a_{m,1} & a_{m,2} & \cdots & a_{m,n}
+    \end{pmatrix} 
+\end{gather}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Tekst}
+
+  Wat niet te doen:
+  \begin{LTXexample}
+$\dim_{Goldie}$
+  \end{LTXexample}
+  maar wel:
+  \begin{LTXexample}
+$\dim_{\text{Goldie}}$
+  \end{LTXexample}
+
+  Ook formatted text (zie eerste les).
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Wiskundige lettertypes}
+
+  \texttt{\textbackslash mathnormal}, \texttt{\textbackslash mathrm}, \texttt{\textbackslash mathit} en \texttt{\textbackslash mathbf} doen wat ze suggereren.
+
+  \begin{description}
+    \item[\texttt{\textbackslash mathsf}] sans-serif, $\text{$k$-}\mathsf{Vect}$ (maar nu zie je weinig)
+    \item[\texttt{\textbackslash mathcal}] calligraphic, $\mathcal{O}$
+    \item[\texttt{\textbackslash mathfrak}] Fraktur, $\mathfrak{m}$
+    \item[\texttt{\textbackslash mathbb}] blackboard bold, $\mathbb{R}$
+  \end{description}
+
+  De laatste twee zitten verstopt in \package{amsfonts}.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Accenten}
+
+  Nu geen constructies meer met backslashes, maar dingen van de vorm \texttt{\textbackslash hat\{\textsl{$\langle$x$\rangle$}\}}, \texttt{\textbackslash widehat\{\textsl{$\langle$xyz$\rangle$}\}} en \texttt{\textbackslash overline\{\textsl{$\langle$xyz$\rangle$}\}} wat resulteert in $\hat{x}$, $\widehat{xyz}$ en $\overline{xyz}$.
+
+  De gewone weglatingstekens gelden nog wel: \verb|x'| levert $x'$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Horizontale ruimte}
+
+  Als basis: \verb|\quad| is gelijk aan de fontgrootte, dus 10 tot 12 punt. \verb|\qquad| is dit twee keer.
+
+  Kleiner:
+  \begin{description}
+    \item[\texttt{\textbackslash,}] 3/18 quad
+    \item[\texttt{\textbackslash:}] 4/18 quad
+    \item[\texttt{\textbackslash;}] 5/18 quad
+    \item[\texttt{\textbackslash!}] -3/18 quad
+  \end{description}
+
+  \begin{equation}
+    \oint_\Gamma \zeta(x)\,\mathrm{d}x
+  \end{equation}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Puntjes}
+
+  In alle soorten en maten: \verb|\dots|, \verb|\ldots|, \verb|\cdots|, \verb|\vdots|, \verb|ddots|.
+
+  Er zijn ook semantische varianten.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Symbolen}
+
+  Bijna elk gekend symbool in de wiskunde (behalve strikte normaaldeler) heeft een bepaald commando:
+  \begin{LTXexample}
+$\leq$, $\subseteq$, $\perp$
+  \end{LTXexample}
+
+  Zij die niet in standaard \TeX\ zitten zijn wel in een package te vinden dan: The Comprehensive \LaTeX\ Symbol List. Vind je het niet zo gauw? Hulde voor \url{http://detexify.kirelabs.org}.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Oefening}
+
+  Zoek volgende symbolen op en typeset ze:
+  \begin{itemize}
+	\item $\Gamma$
+	\item $\subsetneqq$
+	\item $\triangleleft$
+	\item $\varinjlim$ (injectieve limiet)
+	\item $\boxplus$
+  \end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Pijlen}
+
+  \texttt{\textbackslash $\langle$\textsl{lengte}$\rangle\langle$\textsl{richting}$\rangle$ arrow}
+
+  \begin{description}
+    \item[\textsl{richting}] \texttt{right}, \texttt{left}, \texttt{up}, \texttt{down}
+    \item[\textsl{lengte}] voeg \texttt{long} toe indien nodig
+  \end{description}
+
+  Wil je een dubbele pijl? Zet de eerste letter in hoofdletters.
+  \begin{LTXexample}
+$\rightarrow\ \uparrow\ $
+$\leftarrow\ \downarrow$ \\
+$\Rightarrow$
+$\longleftarrow$
+$\Leftrightarrow$
+  \end{LTXexample}
+\end{frame}
+
+
+\subsection{Omgevingen}
+\begin{frame}[fragile]
+  \frametitle{Allemaal goed en wel\ldots}
+
+  maar hoe geef ik nu wiskunde in? Je zag al wat hints: inline gebruiken we \verb|$...$| en er is zoiets als
+  \begin{minted}{tex}
+\begin{equation}
+  ...
+  \label{equation:...}
+\end{equation}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Een overzicht}
+
+  \begin{description}
+    \item[\texttt{equation}] een losstaande vergelijking
+    \item[\texttt{align}] een reeks uitdrukkingen die uitgelijnd worden
+    \item[\texttt{gather}] een reeks uitdrukkingen
+  \end{description}
+
+  De varianten met een ster laten de nummering vallen.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{align} voorbeeld}
+
+  \footnotesize
+  \begin{minted}{tex}
+\begin{align*}
+  (x-y)^3&=(x-y)(x-y)^2 \\
+  &=(x-y)(x^2-2xy+y^2) \\
+  &=x^3-3x^2y+3xy^2-3y^3
+\end{align*}
+  \end{minted}
+\begin{align*}
+  (x-y)^3&=(x-y)(x-y)^2 \\
+  &=(x-y)(x^2-2xy+y^2) \\
+  &=x^3-3x^2y+3xy^2-3y^3
+\end{align*}
+
+Je kan ook meerdere alignments characters gebruiken.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Verwijzen}
+
+  Het gekende truukje met \verb|\label| maar nu met \verb|\eqref|.
+
+  \begin{minted}{tex}
+\numberwithin{equation}{section}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{cases}}
+
+  Stuksgewijze definities:
+  \begin{minted}{tex}
+\begin{equation}
+ u(x) =
+  \begin{cases}
+    \exp{x} & \text{voor $x\geq 0$} \\
+    1 & \text{voor $x<0$}
+  \end{cases}
+\end{equation}
+  \end{minted}
+\begin{equation}
+ u(x) =
+  \begin{cases}
+    \exp{x} & \text{if $x\geq 0$} \\
+    1 & \text{if $x < 0$}
+  \end{cases}
+\end{equation}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Stellingen}
+
+  Voor al uw stellingen: \'e\'en package, \package{amsthm}.
+
+  \texttt{\textbackslash newtheorem\{$\langle$\textsl{omgeving}$\rangle$\}[$\langle$\textsl{nummering}$\rangle$]\{$\langle$\textsl{naam}$\rangle$\}} en \texttt{\textbackslash newtheorem\{$\langle$\textsl{omgeving}$\rangle$\}\{$\langle$\textsl{naam}$\rangle$\}}[$\langle$\textsl{reset}$\rangle$]
+
+  \begin{minted}{tex}
+\newtheorem{theorem}{Stelling}[section]
+\newtheorem{corollary}[theorem]{Gevolg}
+\newtheorem{definition}[theorem]{Definitie}
+\newtheorem{example}[theorem]{Voorbeeld}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Opmerking}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Opmerkingen bij \package{amsthm}}
+
+  \begin{itemize}
+    \item drie stijlen, \verb|\theoremstyle{definition}|;
+    \item er is ook een omgeving voor bewijzen:
+      {\footnotesize
+      \begin{minted}{tex}
+\begin{theorem}[Stelling van Pythagoras]
+  $a^2+b^2=c^2$.
+
+  \begin{proof}
+    Triviaal.  
+  \end{proof}
+\end{theorem}
+      \end{minted}
+      }
+    \item \verb|\numberswapping|
+  \end{itemize}
+\end{frame}
+  

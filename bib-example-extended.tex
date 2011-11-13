@@ -1,0 +1,28 @@
+\documentclass[a4paper]{article}
+\usepackage[english,dutch]{babel}
+\usepackage[fixlanguage]{babelbib}
+\selectbiblanguage{dutch}
+
+\title{Bibliografietest}
+\author{Pieter Belmans}
+
+\declarebtxcommands{dutch}{%
+  \def\btxnumeralshort#1{%
+    \btxnumeralenglish{dutch}{#1}}%
+  \def\btxnumerallong#1{%
+    \ifnumber{#1}{%
+      \ifcase#1 nulde\or eerste\or tweede\or derde\or
+        vierde\or vijfde\or zesde\or zevende\or
+        achtste\or negende\or tiende\else
+        \btxnumeralenglish{dutch}{#1}%
+      \fi}{#1}}%
+}
+
+\begin{document}
+  \maketitle
+
+  In~\cite{formalized-music} wordt algoritmische compositie ge\"introduceerd.
+
+  \bibliographystyle{babalpha}
+  \bibliography{bib-example}
+\end{document}

@@ -1,0 +1,159 @@
+\begin{frame}
+  \frametitle{Slides in \LaTeX?}
+
+  Ja! U kijkt er overigens al 4 weken lang naar.
+
+  Een gew\'eldige package: \package{beamer}. Voor iemand die beseft hoe \LaTeX\ echt werkt is \package{beamer} een prachtvoorbeeld van hoe krachtig \LaTeX\ is. Voor iemand die gewoon mooie presentaties wil maken daarentegen is het ook geweldig.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Concept}
+
+  Een aparte documentclass:
+
+  \begin{minted}{tex}
+ \documentclass{beamer}
+  \end{minted}
+
+  en frames per slide (in tegenstelling tot automatische pagina's):
+  \begin{minted}{tex}
+ \begin{frame}
+   \frametitle{Titel}
+ \end{frame}
+  \end{minted}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Alles wat we kennen\ldots}
+
+  \small
+  werkt gewoon!
+
+  \begin{gather}
+    i\hbar\frac{\partial}{\partial t}\Psi=\hat{H}\Psi \\
+    \left( \beta mc^2+\sum_{k=1}^3\alpha_k p_k c \right)\psi(\mathbf{x},t)=i\hbar\frac{\partial\psi(\mathbf{x},t)}{\partial t}
+  \end{gather}
+
+  \begin{itemize}
+    \item opsommingen
+    \item werken ook
+  \end{itemize}
+
+  Pas op met floats en verbatim.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Titelslide}
+
+  Zoals in \verb|article| werkt \verb|\author{}| en \verb|\title{}|. Om de slide zelf aan te maken:
+  \begin{minted}{tex}
+ \begin{frame}
+   \titlepage
+ \end{frame}
+\end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Structuur}
+
+  De commando's \`a la \verb|\section{}| werken nog steeds, maar geven geen rechtstreekse output! Maar \package{beamer} voorziet de mogelijkheid om hier \emph{automatisch} dingen mee te doen.
+  \begin{minted}{tex}
+ \AtBeginSection[]
+ {
+   \begin{frame}
+ 	   \frametitle{Overzicht}
+ 	   \tableofcontents[currentsection]
+   \end{frame}
+ }
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Handige omgevingen}
+
+  \footnotesize
+  Een hoop omgevingen die logisch uit \package{amsthm} volgen zijn voorgedefinieerd en hebben (mits de juiste stijl) een leuk resultaat:
+  \begin{definition}
+    Zoals hieruit blijkt. Merk op dat we hier geen controle hebben over de taal en we het dus alsnog zelf moeten doen. De ironie.
+  \end{definition}
+
+  \begin{alertblock}{Voorbeeld}
+    Of hieruit.
+  \end{alertblock}
+  \begin{minted}{tex}
+\begin{alertblock}{Voorbeeld}
+  Of hieruit.
+\end{alertblock}
+  \end{minted}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Overlays}
+
+  \small
+  \begin{enumerate}
+    \item<1-> ook wel bekend als
+    \item<2-> het automatisch uncoveren
+    \item<3-> van slides
+    \item<1-> maar ik doe dit niet vaak
+  \end{enumerate}
+  \begin{uncoverenv}<3->
+  \begin{minted}{tex}
+\begin{enumerate}
+  \item<1-> ook wel bekend als
+  \item<2-> het automatisch uncoveren
+  \item<3-> van slides
+  \item<1-> maar ik doe dit niet vaak
+\end{enumerate}
+\end{minted}
+  \end{uncoverenv}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Gebruik van overlays}
+
+  Met \verb|\pause| werk je op de meest intu\"itieve manier, \`a la PowerPoint.
+
+  Je kan dingen slechts 1 keer tonen met \texttt{<$\langle$\textsl{n}$\rangle$>}, tot een bepaalde slide \texttt{<-$\langle$\textsl{n}$\rangle$>}, of vanaf \texttt{<$\langle$\textsl{n}$\rangle$->}.
+
+  Zie de manual voor het werken met omgevingen, maar normaal gezien is \verb|\pause| genoeg voor al je noden.
+
+  \begin{alertblock}{Goede raad}
+    Gebruik dit niet te veel! Heb je het gemist tijdens mijn lessen?
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Verbatim}
+
+  Het waarom brengt ons te ver, maar:
+  \begin{minted}{tex}
+ \begin{frame}[fragile]
+   \frametitle{Titel}
+
+   \verb|verbatim|
+ \end{frame}
+  \end{minted}
+
+  Anders ga je heel enge errors krijgen.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Floats}
+
+  Zul je minder vaak gebruiken, maar indien het toch gebeurt: met de \verb|[H]| placement modifier zou je jezelf problemen kunnen besparen.
+\end{frame}
+
+\begin{frame}
+  \frametitle{Thema's}
+
+  Met \texttt{\textbackslash usetheme\{$\langle$\textsl{naam}$\rangle$\}} kan je andere thema's gebruiken. We bekijken klassikaal hoofdstuk 15 uit de manual.
+\end{frame}
+
+\begin{frame}
+  \frametitle{\texttt{UniversiteitAntwerpen}}
+
+  Geschreven door iemand van het departement Wiskunde--Informatica, zie ook \url{http://win.ua.ac.be/~nschloe/content/ua-beamer-theme}.
+
+  We zullen deze eens proberen te installeren.
+\end{frame}
