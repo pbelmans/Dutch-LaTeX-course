@@ -9,9 +9,9 @@
   \frametitle{Concept}
 
   \begin{itemize}
-	\item \'e\'en (of meerdere) bestanden waarin bibliografie\-informatie staat, onafhankelijk van de weergave;
-    \item citeren gebeurt zoals we met~\texttt{\textbackslash label} en \texttt{\textbackslash ref} werkten, maar nu met~\texttt{\textbackslash cite};
-	\item de layout van de bibliografie en de citaten is aanpasbaar en onafhankelijk van hoe we onze bibliografie hebben opgeslagen.
+  	\item \'e\'en (of meerdere) bestanden waarin bibliografie\-informatie staat, onafhankelijk van de weergave;
+    \item citeren gebeurt zoals we met~\texttt{\textcolor{uagreen}{\textbackslash label}\{$\langle$\textsl{key}$\rangle$\}} en \texttt{\textcolor{uagreen}{\textbackslash ref}\{$\langle$\textsl{key}$\rangle$\}} werkten, maar nu met~\texttt{\textcolor{uagreen}{\textbackslash cite}\{$\langle$\textsl{referentie}$\rangle$\}};
+  	\item de layout van de bibliografie en de citaten is aanpasbaar en onafhankelijk van hoe we onze bibliografie hebben opgeslagen.
   \end{itemize}
 \end{frame}
 
@@ -59,7 +59,7 @@
 \begin{frame}
   \frametitle{Keys}
 
-  Zoals met~\texttt{\textbackslash label\{\textsl{$\langle$key$\rangle$}\}} hebben we een unieke key nodig. Je kan deze opbouwen op basis van de auteur, het jaar van publicatie, de titel, \ldots\ Zorg dat het voor jou duidelijk is.
+  Zoals met~\texttt{\textcolor{uagreen}{\textbackslash label}\{\textsl{$\langle$key$\rangle$}\}} hebben we een unieke sleutel nodig. Je kan deze opbouwen op basis van de auteur, het jaar van publicatie, de titel, \ldots\ Zorg dat het voor jou duidelijk is.
 \end{frame}
 
 \begin{frame}
@@ -82,21 +82,21 @@
 	\item \texttt{year}
 	\item \ldots
   \end{itemize}
-  \verb|author = "Iannis Xenakis"| \\
-  \verb|title = "Formalized Music"|
+  \verb|author = {Iannis Xenakis}| \\
+  \verb|title = {Formalized Music}|
 \end{frame}
 
 \begin{frame}
   \frametitle{Types en velden}
 
   \begin{description}
-	\item[\texttt{article}] verplicht: \texttt{author}, \texttt{title}, \texttt{journal}, \texttt{year} \\
-	  optioneel: \texttt{volume}, \texttt{number}, \texttt{pages}, \texttt{month}, \texttt{note}, \texttt{key}
-	\item[\texttt{book}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{publisher}, \texttt{year} \\
-	  optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
-	\item[\texttt{inbook}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{chapter} of~\texttt{pages}, \texttt{publisher}, \texttt{year} \\
-	  optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
-  \end{description}
+	  \item[\texttt{article}] verplicht: \texttt{author}, \texttt{title}, \texttt{journal}, \texttt{year} \\
+	    optioneel: \texttt{volume}, \texttt{number}, \texttt{pages}, \texttt{month}, \texttt{note}, \texttt{key}
+	  \item[\texttt{book}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{publisher}, \texttt{year} \\
+	    optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
+	  \item[\texttt{inbook}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{chapter} of~\texttt{pages}, \texttt{publisher}, \texttt{year} \\
+	    optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
+    \end{description}
 \end{frame}
 
 \begin{frame}
@@ -128,9 +128,9 @@
   author = {Iannis Xenakis},
   title = {Formalized Music}
   publisher = {Pendragon Press},
-  year = 2001,
-  edition = {second},
-  isbn = "978-1576470794"
+  year = {2001},
+  edition = {2},
+  isbn = {978-1576470794},
 }
   \end{minted}
 \end{frame}
@@ -139,7 +139,7 @@
   \frametitle{En websites?}
 
   In Bib\TeX\ geen concrete oplossing, wel een pseudo-oplossing:
-  \begin{minted}{tex}
+  \begin{minted}{text}
 @misc{wiki:aardappel,
   author = {Wikipedia}
   title = {Aardappel},
@@ -148,7 +148,7 @@
     {\url{http://nl.wikipedia.org/wiki/Aardappel}}
 }
   \end{minted}
-  Vergeet geen~\verb|\usepackage{url}| of (bij voorkeur) \verb|\usepackage{hyperref}|!
+  Vergeet geen~\texttt{\textcolor{uagreen}{\textbackslash usepackage}\{url\}} of (bij voorkeur) \texttt{\textcolor{uagreen}{\textbackslash usepackage}\{hyperref\}}!
 \end{frame}
 
 \subsection{\LaTeX}
@@ -183,7 +183,6 @@ pdflatex document.tex
 bibtex document.aux
 pdflatex document.tex
 pdflatex document.tex\end{verbatim}
-We proberen dit in \TeX maker.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -219,7 +218,7 @@ Rerun to get cross-references right.
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Citeren in je eigen taal}
+  \frametitle{Citeren in je eigen taal (oud)}
 
   \begin{minted}{tex}
 \usepackage[fixlanguage]{babelbib}
@@ -228,31 +227,63 @@ Rerun to get cross-references right.
 \bibliographystyle{babplain}
 \bibliography{sample}
   \end{minted}
-  Dus gebruik de juiste style.
+  Dus gebruik de juiste style. Maar er zitten nog steeds bugs in deze package!
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Uitgewerkt voorbeeld}
+  \frametitle{Citeren in je eigen taal (nieuw)}
 
-  \footnotesize
-  \inputminted{tex}{bib-example.tex}
+  \begin{minted}{tex}
+\usepackage{biblatex}
+
+\addbibresource{biblatex-examples.bib}
+  \end{minted}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Uitgewerkt voorbeeld}
+  \frametitle{Bib\LaTeX}
+
+  Bib\LaTeX\ is de toekomst, maar op dit moment is het nog niet ingeburgerd genoeg om er diep op in te gaan.
+
+  Samenvatting:
+  \begin{enumerate}
+    \item gebruikt \verb|biber| of \verb|bibtex| als zogeheten back-end (\verb|biber| is hip en nieuw)
+    \item veel betere ondersteuning van talen (o.a.\ door mezelf) 
+    \item (t\'e) veel mogelijkheden
+    \item beter ge\"implementeerd
+    \item three-pass
+  \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Uitgewerkt voorbeeld (\texttt{.bib})}
 
   \inputminted{tex}{bib-example.bib}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Mijn excuses}
+  \frametitle{Uitgewerkt voorbeeld (\texttt{.tex})}
 
-  De package \package{babelbib} bevat nog bugs, ontdekte ik bij het maken van deze slides. Ik zal de maker contacteren om deze op te lossen. Tot dan moet je bijvoorbeeld je maanden meteen correct schrijven en editienummers voluit schrijven.
+  \scriptsize
+  \inputminted{tex}{bib-example.tex}
 \end{frame}
-
 
 \begin{frame}[fragile]
-  \frametitle{Hack}
+  \frametitle{Uitgewerkt voorbeeld met Bib\LaTeX\ (\texttt{.tex})}
 
-  \inputminted[firstline=9,lastline=19]{tex}{bib-example-extended.tex}
+  \scriptsize
+  \inputminted{tex}{bib-example-biblatex.tex}
 \end{frame}
+
+%\begin{frame}[fragile]
+%  \frametitle{Mijn excuses}
+%
+%  De package \package{babelbib} bevat nog bugs, ontdekte ik bij het maken van deze slides. Ik zal de maker contacteren om deze op te lossen. Tot dan moet je bijvoorbeeld je maanden meteen correct schrijven en editienummers voluit schrijven.
+%\end{frame}
+%
+%
+%\begin{frame}[fragile]
+%  \frametitle{Hack}
+%
+%  \inputminted[firstline=9,lastline=19]{tex}{bib-example-extended.tex}
+%\end{frame}

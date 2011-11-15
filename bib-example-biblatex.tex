@@ -1,13 +1,12 @@
 \documentclass[a4paper]{article}
 \usepackage[english,dutch]{babel}
-\usepackage[fixlanguage]{babelbib}
-\selectbiblanguage{dutch}
+\usepackage[style = alphabetic, backend = biber]{biblatex}
+\addbibresource{bib-example.bib}
 
 \title{Bibliografietest}\author{Pieter Belmans}
 
 \begin{document}
   \maketitle
   In~\cite{formalized-music} wordt algoritmische compositie ge\"introduceerd.
-  \bibliographystyle{babalpha}
-  \bibliography{bib-example}
+  \printbibliography
 \end{document}

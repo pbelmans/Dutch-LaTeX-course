@@ -10,11 +10,11 @@
 
   De beste manier van opvullen wordt door \LaTeX\ zelf bepaald, de tekst vloeit rondom de figuren en tabellen om een optimale layout te bepalen. Je hebt zelf wel nog controle. \\[1em]
 
-  \texttt{\textbackslash begin\{figure\}[$\langle$\textsl{modifiers}$\rangle$]} \\
-  \texttt{\textbackslash end\{figure\}} \\[.5em]
+  \texttt{\textcolor{uagreen}{\textbackslash begin}\{figure\}[$\langle$\textsl{modifiers}$\rangle$]} \\
+  \texttt{\textcolor{uagreen}{\textbackslash end}\{figure\}} \\[.5em]
 
-  \texttt{\textbackslash begin\{table\}[$\langle$\textsl{modifiers}$\rangle$]} \\
-  \texttt{\textbackslash end\{table\}}
+  \texttt{\textcolor{uagreen}{\textbackslash begin}\{table\}[$\langle$\textsl{modifiers}$\rangle$]} \\
+  \texttt{\textcolor{uagreen}{\textbackslash end}\{table\}}
 \end{frame}
 
 \begin{frame}
@@ -55,33 +55,35 @@
   \end{description}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
   \frametitle{Opmerkingen}
 
   \begin{itemize}
-    \item herinner \verb|\clearpage| versus \verb|\newpage|;
+    \item herinner \texttt{\textcolor{uagreen}{\textbackslash clearpage}} versus \texttt{\textcolor{uagreen}{\textbackslash newpage}};
     \item floats worden in een wachtrij gezet die wordt gerespecteerd;
     \item probeer pas op het einde aandacht te besteden aan placement modifiers, als je tekst grotendeels af is.
   \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
   \frametitle{Bijschriften}
 
-  \texttt{\textbackslash begin\{figure\}[$\langle$\textsl{modifiers}$\rangle$]} \\
+  \texttt{\textcolor{uagreen}{\textbackslash begin}\{figure\}[$\langle$\textsl{modifiers}$\rangle$]} \\
   \ \ \ldots \\
-  \ \ \texttt{\textbackslash caption\{$\langle$\textsl{bijschrift}$\rangle$\}} \\
-  \texttt{\textbackslash end\{figure\}}
+  \ \ \texttt{\textcolor{uagreen}{\textbackslash caption}\{$\langle$\textsl{bijschrift}$\rangle$\}} \\
+  \texttt{\textcolor{uagreen}{\textbackslash end}\{figure\}}
 
   \begin{exampleblock}{Tip}
-    Vergeet \verb|\usepackage[dutch]{babel}| niet!
+    Vergeet \texttt{\textcolor{uagreen}{\textbackslash usepackage}[dutch]\{babel\}} niet!
   \end{exampleblock}
 \end{frame}
 
 \begin{frame}
   \frametitle{Verwijzen}
 
-  Herinner de constructie met \texttt{\textbackslash label\{$\langle$\textsl{marker}$\rangle$\}} en \texttt{\textbackslash ref\{$\langle$\textsl{marker}$\rangle$\}}, deze werkt hier ook.
+  Herinner de constructie met \texttt{\textcolor{uagreen}{\textbackslash label}\{$\langle$\textsl{marker}$\rangle$\}} en \texttt{\textcolor{uagreen}{\textbackslash ref}\{$\langle$\textsl{marker}$\rangle$\}}, deze werkt hier ook.
+
+  \pause
 
   \begin{alertblock}{Opgelet}
     Plaats het label \emph{binnenin} of \emph{na} de caption.
@@ -125,7 +127,7 @@
 \begin{frame}[fragile]
   \frametitle{Afbeeldingen toevoegen}
 
-  \texttt{\textbackslash includegraphics} \\
+  \texttt{\textcolor{uagreen}{\textbackslash includegraphics}} \\
   \ \ \texttt{[$\langle$\textsl{optie-1}$\rangle$=$\langle$\textsl{waarde-1}$\rangle$,\ldots,$\langle$\textsl{optie-$n\rangle$}=$\langle$\textsl{waarde-$n\rangle$}]} \\
   \ \ \texttt{\{$\langle$\textsl{bestandsnaam}$\rangle$\}}
 
@@ -184,11 +186,11 @@
 \begin{frame}
   \frametitle{\texttt{tabular}}
 
-  De omgeving waarin alles gebeurt, de vorm:
+  Dit is de omgeving waarin alles gebeurt, de vorm:
 
-  \texttt{\textbackslash begin\{tabular\}[$\langle$\textsl{positie}$\rangle$]\{$\langle$\textsl{specificatie}$\rangle$\}} \\
+  \texttt{\textcolor{uagreen}{\textbackslash begin}\{tabular\}[$\langle$\textsl{positie}$\rangle$]\{$\langle$\textsl{specificatie}$\rangle$\}} \\
   \ \ \texttt{\ldots} \\
-  \texttt{\textbackslash end\{tabular\}}
+  \texttt{\textcolor{uagreen}{\textbackslash end}\{tabular\}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -230,7 +232,7 @@
   \frametitle{Verticale lijnen}
 
   \begin{alertblock}{Tip}
-    Probeer verticale strepen te vermijden. Zie bijvoorbeeld ook de package \href{http://ctan.org/pkg/booktabs}{\texttt{ctan.org/pkg/booktabs}}.
+    Probeer verticale strepen te vermijden. Zie ook ook de package \href{http://ctan.org/pkg/booktabs}{\texttt{ctan.org/pkg/booktabs}}.
   \end{alertblock}
 
   In deze slides gebruik ik deze package om meteen het goede voorbeeld te geven.
@@ -275,7 +277,7 @@
     \texttt{\textbackslash newline} & een nieuwe regel \emph{binnen de cel zelf}, voor \texttt{p\{$\langle$\textsl{dimensie}$\rangle$\}}
   \end{tabular} 
 
-  En in de \package{booktabs}: \verb|\toprule|, \verb|\midrule|, \verb|\bottomrule|.
+  En in \href{http://ctan.org/pkg/booktabs}{\texttt{ctan.org/pkg/booktabs}}: \verb|\toprule|, \verb|\midrule|, \verb|\bottomrule|.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -305,7 +307,7 @@
 \begin{frame}[fragile]
   \frametitle{\texttt{\textbackslash multicolumn}}
 
-  \texttt{\textbackslash multicolumn\{$\langle$\textsl{n}$\rangle$\}\{$\langle$\textsl{specificatie}$\rangle$\}\{$\langle$\textsl{tekst}$\rangle$\}} \\[1em]
+  \texttt{\textcolor{uagreen}{\textbackslash multicolumn}\{$\langle$\textsl{n}$\rangle$\}\{$\langle$\textsl{specificatie}$\rangle$\}\{$\langle$\textsl{tekst}$\rangle$\}} \\[1em]
 
   \begin{tabular}{cl}
     $\langle$\textsl{n}$\rangle$ & aantal kolommen dat vanaf dan samengenomen moet worden \\
@@ -313,7 +315,7 @@
     $\langle$\textsl{tekst}$\rangle$ & de eigenlijke tekst \\
   \end{tabular} \\[2em]
 
-  Ook een package \package{multirow} om \verb|\multirow| mogelijk te maken.
+  Ook een package \package{multirow} om \texttt{\textcolor{uagreen}{\textbackslash multirow}} mogelijk te maken.
 \end{frame}
 
 \begin{frame}[fragile]
