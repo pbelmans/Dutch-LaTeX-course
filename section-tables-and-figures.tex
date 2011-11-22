@@ -179,7 +179,7 @@
   \begin{itemize}
     \item er is \emph{heel veel} mogelijk, ik kan verre van alles behandelen;
     \item probeer het simpel te houden: is je tabel nodig? is alle data nodig?
-    \item er bestaan tools om tabellen te exporteren uit OpenOffice, dus misschien ook wel voor Microsoft Office.
+    \item er bestaan tools om tabellen te exporteren uit Excel: zie \href{http://latex.ugent.be/april-2006-microsoft-excel-tabellen-invoegen-latex}{latex.ugent.be/april-2006-microsoft-excel-tabellen-invoegen-latex}
   \end{itemize}
 \end{frame}
 
@@ -196,7 +196,7 @@
 \begin{frame}[fragile]
   \frametitle{Positie}
 
-  Niet heel erg van toepassing omdat je van mij altijd een \verb|table|-omgeving moet gebruiken, maar voor de volledigheid, hiermee wordt de positie tegenover de baseline gegeven, dus
+  Niet heel erg van toepassing omdat je best een \verb|table|-omgeving gebruikt (bovendien is het dus ook optioneel), maar voor de volledigheid: hiermee wordt de positie tegenover de baseline gegeven, dus
   \begin{tabular}[b]{ccc}
     1 & 2 & 3 \\\midrule
     4 & 5 & 6
@@ -232,7 +232,7 @@
   \frametitle{Verticale lijnen}
 
   \begin{alertblock}{Tip}
-    Probeer verticale strepen te vermijden. Zie ook ook de package \href{http://ctan.org/pkg/booktabs}{\texttt{ctan.org/pkg/booktabs}}.
+    Probeer verticale strepen te vermijden. Zie ook ook de package \package{booktabs}.
   \end{alertblock}
 
   In deze slides gebruik ik deze package om meteen het goede voorbeeld te geven.
@@ -272,9 +272,9 @@
   \begin{tabular}{cp{.7\textwidth}}
     \texttt{\&} & tussen kolommen \\
     \texttt{\textbackslash\textbackslash} & start een nieuwe kolom \\
-    \texttt{\textbackslash\textbackslash$\langle$\textsl{n}pt$\rangle$} & start een nieuwe kolom, optioneel een witruimte van de opgegeven dimensie \\
+    \texttt{\textbackslash\textbackslash[$\langle$\textsl{n}pt$\rangle$]} & start een nieuwe kolom, optioneel een witruimte van de opgegeven dimensie \\
     \texttt{\textbackslash hline} & horizontale lijn \\
-    \texttt{\textbackslash newline} & een nieuwe regel \emph{binnen de cel zelf}, voor \texttt{p\{$\langle$\textsl{dimensie}$\rangle$\}}
+    \texttt{\textbackslash newline} & een nieuwe regel \emph{binnen de cel zelf}, in het geval \texttt{p\{$\langle$\textsl{dimensie}$\rangle$\}}
   \end{tabular} 
 
   En in \href{http://ctan.org/pkg/booktabs}{\texttt{ctan.org/pkg/booktabs}}: \verb|\toprule|, \verb|\midrule|, \verb|\bottomrule|.
@@ -293,13 +293,13 @@
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Voorbeeld}
+  \frametitle{Voorbeeld van \package{booktabs}}
 
   \inputminted{tex}{table-example.tex}
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Voorbeeld}
+  \frametitle{Voorbeeld van \package{booktabs}}
 
   \input{table-example.tex}
 \end{frame}
@@ -307,6 +307,7 @@
 \begin{frame}[fragile]
   \frametitle{\texttt{\textbackslash multicolumn}}
 
+  \small
   \texttt{\textcolor{uagreen}{\textbackslash multicolumn}\{$\langle$\textsl{n}$\rangle$\}\{$\langle$\textsl{specificatie}$\rangle$\}\{$\langle$\textsl{tekst}$\rangle$\}} \\[1em]
 
   \begin{tabular}{cl}

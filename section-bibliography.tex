@@ -3,15 +3,19 @@
   \frametitle{Bibliografiebeheer}
 
   Een van d\'e redenen om~\LaTeX\ te gebruiken is het goede beheer van referenties en bibliografie\"en. We gebruiken hiervoor~Bib\TeX. Dit is een extern programma dat output genereert die we kunnen gebruiken in~\LaTeX.
+
+  \begin{exampleblock}[Bib\LaTeX]
+    Er is een opvolger: Bib\LaTeX, maar omdat ik nog niet zeker weet of en hoe deze gaat werken in MiK\TeX~2.9 laat ik deze dit jaar nog achterwege.
+  \end{exampleblock}
 \end{frame}
 
 \begin{frame}
   \frametitle{Concept}
 
   \begin{itemize}
-  	\item \'e\'en (of meerdere) bestanden waarin bibliografie\-informatie staat, onafhankelijk van de weergave;
+    \item \'e\'en (of meerdere) bestanden waarin bibliografie\-informatie staat, onafhankelijk van de weergave;
     \item citeren gebeurt zoals we met~\texttt{\textcolor{uagreen}{\textbackslash label}\{$\langle$\textsl{key}$\rangle$\}} en \texttt{\textcolor{uagreen}{\textbackslash ref}\{$\langle$\textsl{key}$\rangle$\}} werkten, maar nu met~\texttt{\textcolor{uagreen}{\textbackslash cite}\{$\langle$\textsl{referentie}$\rangle$\}};
-  	\item de layout van de bibliografie en de citaten is aanpasbaar en onafhankelijk van hoe we onze bibliografie hebben opgeslagen.
+    \item de layout van de bibliografie en de citaten is aanpasbaar en onafhankelijk van hoe we onze bibliografie hebben opgeslagen.
   \end{itemize}
 \end{frame}
 
@@ -19,16 +23,16 @@
   \frametitle{\texttt{.bib} bestand}
 
   \begin{enumerate}
-	\item bevat (delen van) de bibliografie;
-	\item volgt een vaste structuur:
+    \item bevat (delen van) de bibliografie;
+    \item volgt een vaste structuur:
 
-	  \texttt{@\textsl{$\langle$entry-type$\rangle$}\{\textsl{$\langle$key$\rangle$},\\
-	  \ \ \textsl{$\langle$field-1$\rangle$} = \textsl{$\langle$value-1$\rangle$}, \\
-	  \ \ \ldots \\
-	  \ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$} \\
-	  \}}
-	  
-	  en we zullen deze nu invullen.
+      \texttt{@\textsl{$\langle$entry-type$\rangle$}\{\textsl{$\langle$key$\rangle$},\\
+      \ \ \textsl{$\langle$field-1$\rangle$} = \textsl{$\langle$value-1$\rangle$}, \\
+      \ \ \ldots \\
+      \ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$}, \\
+      \}}
+      
+      en we zullen deze nu invullen.
   \end{enumerate}
 \end{frame}
 
@@ -37,22 +41,22 @@
 
   Bepaalt wat voor type het document heeft:
   \begin{itemize}
-	\item \texttt{article}
-	\item \texttt{book}
-	\item \texttt{inbook}: een specifiek deel van een boek
-	\item \texttt{misc}
-	\item \texttt{proceedings}
-	\item \ldots
+    \item \texttt{article}
+    \item \texttt{book}
+    \item \texttt{inbook}: een specifiek deel van een boek
+    \item \texttt{misc}
+    \item \texttt{proceedings}
+    \item \ldots
   \end{itemize}
 \end{frame}
 
 \begin{frame}
-  \frametitle{Bib\TeX\ voorbeeld}
+  \frametitle{Voorbeeld}
 
 \texttt{@book\{\textsl{$\langle$key$\rangle$},\\
 \ \ \textsl{$\langle$field-1$\rangle$} = \textsl{$\langle$value-1$\rangle$}, \\
 \ \ \ldots \\
-\ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$} \\
+\ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$}, \\
 \}}
 \end{frame}
 
@@ -63,12 +67,12 @@
 \end{frame}
 
 \begin{frame}
-  \frametitle{Bib\TeX\ voorbeeld}
+  \frametitle{Voorbeeld}
 
 \texttt{{@}book\{formalized-music,\\
 \ \ \textsl{$\langle$field-1$\rangle$} = \textsl{$\langle$value-1$\rangle$}, \\
 \ \ \ldots \\
-\ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$} \\
+\ \ \textsl{$\langle$field-$n\rangle$} = \textsl{$\langle$value-$n\rangle$}, \\
 \}}
 \end{frame}
 
@@ -77,25 +81,25 @@
 
   Elke entry bevat een aantal keys (of velden) met geassocieerde waarden, \emph{afhankelijk van het type}. Sommige zijn verplicht, anderen zijn optioneel. Enkele voorbeelden:
   \begin{itemize}
-	\item \texttt{author}
-	\item \texttt{title}
-	\item \texttt{year}
-	\item \ldots
+    \item \texttt{author}
+    \item \texttt{title}
+    \item \texttt{year}
+    \item \ldots
   \end{itemize}
-  \verb|author = {Iannis Xenakis}| \\
-  \verb|title = {Formalized Music}|
+  \verb|author = {Iannis Xenakis},| \\
+  \verb|title = {Formalized Music},|
 \end{frame}
 
 \begin{frame}
   \frametitle{Types en velden}
 
   \begin{description}
-	  \item[\texttt{article}] verplicht: \texttt{author}, \texttt{title}, \texttt{journal}, \texttt{year} \\
-	    optioneel: \texttt{volume}, \texttt{number}, \texttt{pages}, \texttt{month}, \texttt{note}, \texttt{key}
-	  \item[\texttt{book}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{publisher}, \texttt{year} \\
-	    optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
-	  \item[\texttt{inbook}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{chapter} of~\texttt{pages}, \texttt{publisher}, \texttt{year} \\
-	    optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
+    \item[\texttt{article}] verplicht: \texttt{author}, \texttt{title}, \texttt{journal}, \texttt{year} \\
+      optioneel: \texttt{volume}, \texttt{number}, \texttt{pages}, \texttt{month}, \texttt{note}, \texttt{key}
+    \item[\texttt{book}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{publisher}, \texttt{year} \\
+      optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
+    \item[\texttt{inbook}] verplicht: \texttt{author} of~\texttt{editor}, \texttt{title}, \texttt{chapter} of~\texttt{pages}, \texttt{publisher}, \texttt{year} \\
+      optioneel: \texttt{volume}, \texttt{series}, \texttt{address}, \texttt{edition}, \texttt{month}, \texttt{note}, \texttt{key}
     \end{description}
 \end{frame}
 
@@ -103,10 +107,10 @@
   \frametitle{Types en velden (2)}
 
   \begin{description}[\texttt{proceedings}]
-	\item[\texttt{misc}] verplicht: geen \\
-	  optioneel: \texttt{author}, \texttt{title}, \texttt{howpublished}, \texttt{month}, \texttt{year}, \texttt{note}, \texttt{key}
-	\item[\texttt{proceedings}] verplicht: \texttt{title}, \texttt{year} \\
-	  optioneel: \texttt{editor}, \texttt{publisher}, \texttt{organization}, \texttt{address}, \texttt{month}, \texttt{note}, \texttt{key}
+    \item[\texttt{misc}] verplicht: geen \\
+      optioneel: \texttt{author}, \texttt{title}, \texttt{howpublished}, \texttt{month}, \texttt{year}, \texttt{note}, \texttt{key}
+    \item[\texttt{proceedings}] verplicht: \texttt{title}, \texttt{year} \\
+    optioneel: \texttt{editor}, \texttt{publisher}, \texttt{organization}, \texttt{address}, \texttt{month}, \texttt{note}, \texttt{key}
   \end{description}
 \end{frame}
 
@@ -143,7 +147,7 @@
 @misc{wiki:aardappel,
   author = {Wikipedia}
   title = {Aardappel},
-  year = 2011,
+  year = {2011},
   howpublished =
     {\url{http://nl.wikipedia.org/wiki/Aardappel}}
 }
@@ -159,10 +163,9 @@
   \begin{minted}{tex}
 \bibliographystyle{plain}
 \bibliography{file-1,file-2}
-\end{document}
   \end{minted}
   \begin{alertblock}{Spaties}
-	Geen spatie tussen opeenvolgende bestanden gebruiken. Extensies zijn ook niet nodig.
+  Geen spatie tussen opeenvolgende bestanden gebruiken. Extensies zijn ook niet nodig.
   \end{alertblock}
 \end{frame}
 
@@ -170,7 +173,7 @@
   \frametitle{En we citeren}
 
   \begin{minted}{tex}
-	Dit is een citaat, zie~\cite{wiki:bibtex}.
+  Dit is een citaat, zie~\cite{wiki:bibtex}.
   \end{minted}
 \end{frame}
 
@@ -233,6 +236,8 @@ Rerun to get cross-references right.
 \begin{frame}[fragile]
   \frametitle{Citeren in je eigen taal (nieuw)}
 
+  Om een tipje van de sluier van Bib\LaTeX\ op te lichten:
+
   \begin{minted}{tex}
 \usepackage{biblatex}
 
@@ -241,9 +246,14 @@ Rerun to get cross-references right.
 \end{frame}
 
 \begin{frame}[fragile]
-  \frametitle{Bib\LaTeX}
+  \frametitle{Bib\LaTeX?}
 
-  Bib\LaTeX\ is de toekomst, maar op dit moment is het nog niet ingeburgerd genoeg om er diep op in te gaan.
+  Bib\LaTeX\ is de toekomst, maar op dit moment is het nog niet ingeburgerd genoeg om er diep op in te gaan. Het is een \emph{package} die de functionaliteit van de zogeheten \emph{back-end} \texttt{bibtex} uitbreidt, maar tegelijkertijd is er een veel betere back-end ontwikkeld.
+\end{frame}
+
+
+\begin{frame}[fragile]
+  \frametitle{Bib\LaTeX: samenvatting}
 
   Samenvatting:
   \begin{enumerate}
@@ -251,7 +261,7 @@ Rerun to get cross-references right.
     \item veel betere ondersteuning van talen (o.a.\ door mezelf) 
     \item (t\'e) veel mogelijkheden
     \item beter ge\"implementeerd
-    \item three-pass
+    \item slechts three-pass
   \end{enumerate}
 \end{frame}
 

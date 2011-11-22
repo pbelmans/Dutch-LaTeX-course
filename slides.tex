@@ -41,8 +41,15 @@
 }
 \setbeamerfont{description item}{series=\bfseries}
 
-\newcommand\package[1]{\href{http://ctan.org/pkg/#1}{\texttt{http://ctan.org/pkg/#1}}}
+\newcommand\package[1]{\href{http://ctan.org/pkg/#1}{\texttt{ctan.org/pkg/#1}}}
 \newcommand\cpp{{C\nolinebreak[4]\hspace{-.05em}\raisebox{.4ex}{\tiny\bf ++}}}
+\newcommand\exercise{
+\begin{frame}
+  \frametitle{Opgave}
+
+  Met wat we geleerd hebben moet het mogelijk zijn om de ``opgave'' die ik nu uitdeel na te maken. Aarzel niet om vragen te stellen. Het is mogelijk om de opgave \emph{exact} na te maken, door wat ik de beste manier om te \TeX'en vind toe te passen en die jullie gewoon moeten leren wat mij betreft :).
+\end{frame}
+}
 
 \definecolor{uagreen}{RGB}{0,126,17}
 
@@ -56,7 +63,7 @@
 \date{\today}
 \author{\textsc{ACM Student Chapter} \\ Pieter Belmans}
 
-\includeonlylecture{les-1}
+\includeonlylecture{les-2}
 
 \begin{document}
 \begin{frame}
@@ -76,16 +83,11 @@
 \section{Tekstopmaak}
 \input{section-text}
 
-\begin{frame}
-  \frametitle{Opgave}
-
-  Met wat we geleerd hebben moet het mogelijk zijn om de ``opgave'' die ik nu uitdeel na te maken. Aarzel niet om vragen te stellen. Het is mogelijk om de opgave \emph{exact} na te maken, door wat ik de beste manier om te \TeX'en vind toe te passen en die jullie gewoon moeten leren wat mij betreft :).
-\end{frame}
-
+\exercise
 
 \part{Les 2}
 \lecture
-{We leren hoe we een bibliografie toevoegen aan onze tekst, hoe we figuren en tabellen gebruiken en indien er nog tijd is hoe we werken met lettertypes en groottes.}
+{We leren hoe we een bibliografie toevoegen aan onze tekst, hoe we figuren en tabellen gebruiken en op het einde vertel ik nog over hoe we werken met lettertypes en lettergroottes.}
 {les-2}
 \section{Bibliografie\"en}
 \input{section-bibliography}
@@ -94,6 +96,7 @@
 \section{Uitzicht}
 \input{section-layout}
 
+\exercise
 
 \part{Les 3}
 \lecture
