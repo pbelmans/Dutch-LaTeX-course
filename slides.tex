@@ -89,6 +89,32 @@
 \lecture
 {We leren hoe we een bibliografie toevoegen aan onze tekst, hoe we figuren en tabellen gebruiken en op het einde vertel ik nog over hoe we werken met lettertypes en lettergroottes.}
 {les-2}
+\begin{frame}
+  \frametitle{Vragen van vorige week}
+
+  \begin{description}[tabellen uit Excel]
+    \item[paginanummering] \texttt{\textcolor{uagreen}{\textbackslash pagestyle}} en \texttt{\textcolor{uagreen}{\textbackslash thispagestyle}};
+    \item[lettertypes] wordt deze les besproken;
+    \item[bad boxes] zie volgende slide;
+    \item[tabellen uit Excel] wordt deze les besproken;
+    \item[\texttt{\textcolor{uagreen}{\textbackslash parindent}}] zie opgave vorige week en Wikibooks
+  \end{description}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Bad boxes}
+
+  \LaTeX\ gaat zelf de optimale splitsing van zinnen bepalen, maar soms is er geen goede keuze mogelijk en maakt \LaTeX\ geen keuze: we krijgen een \emph{bad box}. Oplossingen:
+  \begin{itemize}
+    \item negeren;
+    \item manueel hyphenaten;
+    \item tekst herschrijven;
+    \item \texttt{\textcolor{uagreen}{\textbackslash usepackage}\{microtype\}} (zie \package{microtype});
+  \end{itemize}
+
+  Gebruik \texttt{\textcolor{uagreen}{\textbackslash documentclass}[draft]\{$\langle$\textsl{class}$\rangle$\}} om een goed beeld te krijgen.
+\end{frame}
+
 \section{Bibliografie\"en}
 \input{section-bibliography}
 \section{Tabellen en afbeeldingen}
