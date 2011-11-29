@@ -76,14 +76,15 @@ $\sigma\,\varsigma$
 \begin{frame}[fragile]
   \frametitle{Operators}
 
-  Ook wel functies met een naam. Zoals daar zijn $\cos$, $\sin$, $\log$, \ldots
+  Ook wel ``functies met een naam''. Zoals daar zijn $\cos$, $\sin$, $\log$, \ldots
 
   \begin{LTXexample}
-$\sin(\pi)=0$,~$\tan(\pi/2)=1$.
+$\sin(\pi)=0$,
+$\tan(\pi/2)=1$.
   \end{LTXexample}
 
   De meest voor de hand liggende zijn voor gedefinieerd, anders: \\
-  \texttt{\textbackslash DeclareMathOperator\textbackslash\textsl{$\langle$commandonaam$\rangle$}\{\textsl{$\langle$naam$\rangle$}\}}
+  \texttt{\textcolor{uagreen}{\textbackslash DeclareMathOperator}\textbackslash\textsl{$\langle$commandonaam$\rangle$}\{\textsl{$\langle$naam$\rangle$}\}}
   \begin{minted}{tex}
 \DeclareMathOperator\characteristic{char}
 \DeclareMathOperator\trace{tr}
@@ -100,9 +101,10 @@ $\sin(\pi)=0$,~$\tan(\pi/2)=1$.
 \end{equation}
   \end{LTXexample}
 
-  \texttt{\textbackslash DeclareMathOperator\textbackslash\textsl{$\langle$commandonaam$\rangle$}\{\textsl{$\langle$naam$\rangle$}\}}
+  \texttt{\textcolor{uagreen}{\textbackslash DeclareMathOperator}\textbackslash\textsl{$\langle$commandonaam$\rangle$}\{\textsl{$\langle$naam$\rangle$}\}}
   \begin{minted}{tex}
 \DeclareMathOperator*{\argmax}{arg\,max} 
+\DeclareMathOperator*\argmax{arg\,max} 
   \end{minted}
 \end{frame}
 
@@ -110,13 +112,14 @@ $\sin(\pi)=0$,~$\tan(\pi/2)=1$.
   \frametitle{Sub- en superscript}
 
   Daarom zijn \verb|_| en \verb|^| dus speciale karakters:
+  \small
   \begin{LTXexample}
 $F_{n+2}=F_{n+1}+F_n$ \\
 $O(n^{n^n})$ \\
 $f|_{[0,1]}$ \\
 $\lim_{x\rightarrow 0}$
 \begin{equation}
-  \int_0^x f'(x)\mathrm{d}x
+  \int_0^x\!f'(x)\,\mathrm{d}x
 \end{equation}
   \end{LTXexample}
 \end{frame}
@@ -124,7 +127,7 @@ $\lim_{x\rightarrow 0}$
 \begin{frame}[fragile]
   \frametitle{Breuken en binomiaalco\"effici\"enten}
 
-  \texttt{\textbackslash frac\{$\langle$\textsl{p}$\rangle$\}\{$\langle$\textsl{q}$\rangle$\}} en \texttt{\textbackslash binom\{$\langle$\textsl{p}$\rangle$\}\{$\langle$\textsl{q}$\rangle$\}}
+  \texttt{\textcolor{uagreen}{\textbackslash frac}\{$\langle$\textsl{p}$\rangle$\}\{$\langle$\textsl{q}$\rangle$\}} en \texttt{\textcolor{uagreen}{\textbackslash binom}\{$\langle$\textsl{p}$\rangle$\}\{$\langle$\textsl{q}$\rangle$\}}
 
   \begin{LTXexample}
 $\frac{\sin(x)}{\cos(x)}$ \\
@@ -135,6 +138,12 @@ $\displaystyle\binom{n}{k}$
 \end{equation}
   \end{LTXexample}
   Of met~\package{xfrac}: $\sfrac{1}{2}$.
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\textbackslash displaystyle}}
+
+  Er zijn 4 formaten, van groot naar klein: \texttt{\textcolor{uagreen}{\textbackslash displaystyle}}, \texttt{\textcolor{uagreen}{\textbackslash textstyle}}, \texttt{\textcolor{uagreen}{\textbackslash scriptstyle}}, \texttt{\textcolor{uagreen}{\textbackslash scriptscriptstyle}}. Respectievelijk in display mode (in equations etc.), text mode (inline, of binnen omgevingen in equations), eerste niveau van sub- en superscripts, alle volgende niveaus van sub- en superscript.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -151,6 +160,7 @@ $\sqrt{2}$,~$\sqrt[3]{n}$
 \begin{frame}[fragile]
   \frametitle{Sommen en aanverwanten}
 
+  \small
 \begin{LTXexample}
 $\sum_{k=1}^n k^2$ \\
 \begin{equation}
@@ -161,7 +171,7 @@ $\sum_{k=1}^n k^2$ \\
 \end{LTXexample}
 
 \begin{alertblock}{\texttt{\textbackslash big}-varianten}
-  Leer op de goede momenten \verb|\bigcup| gebruiken. Want $\bigcup_{i=1}^n U_i\neq \cup_{i=1}^n U_i$.
+  Leer op de goede momenten \texttt{\textcolor{uagreen}{\textbackslash} bigcup} gebruiken. Want $\bigcup_{i=1}^n U_i\neq \cup_{i=1}^n U_i$.
 \end{alertblock}
 \end{frame}
 
@@ -175,6 +185,19 @@ $\sum_{k=1}^n k^2$ \\
   \end{minted}
 \begin{equation}
   \sum_{\substack{0<k<m \\ 0<l<n}} k+l
+\end{equation}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{\texttt{\textbackslash mathclap\{\}}}
+
+  \begin{minted}{tex}
+\begin{equation}
+  \sum_{\mathclap{\substack{0<k<m \\ 0<l<n}}}\,k+l
+\end{equation}
+  \end{minted}
+\begin{equation}
+  \sum_{\mathclap{\substack{0<k<m \\ 0<l<n}}}\,k+l
 \end{equation}
 \end{frame}
 
@@ -220,7 +243,7 @@ $\lceil\cdot\rceil$
   \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}
 \end{gather}
 
-Maar er zijn ook nog \verb|bmatrix|, \verb|Bmatrix|, \verb|vmatrix| en \verb|Vmatrix|. Ook is er telkens een \texttt{\textbackslash\textsl{$\langle$d$\rangle$}matrix*}-variant.
+Maar er zijn ook nog \verb|bmatrix|, \verb|Bmatrix|, \verb|vmatrix| en \verb|Vmatrix|. Ook is er telkens een \texttt{\textsl{$\langle$d$\rangle$}matrix*}-variant om alignment te bepalen.
 \end{frame}
 
 \begin{frame}[fragile]
@@ -264,16 +287,16 @@ $\dim_{\text{Goldie}}$
   Ook formatted text (zie eerste les).
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
   \frametitle{Wiskundige lettertypes}
 
-  \texttt{\textbackslash mathnormal}, \texttt{\textbackslash mathrm}, \texttt{\textbackslash mathit} en \texttt{\textbackslash mathbf} doen wat ze suggereren.
+  \texttt{\textcolor{uagreen}{\textbackslash mathnormal}\{\}}, \texttt{\textcolor{uagreen}{\textbackslash mathrm}\{\}}, \texttt{\textcolor{uagreen}{\textbackslash mathit}\{\}} en \texttt{\textcolor{uagreen}{\textbackslash mathbf}\{\}} doen wat ze suggereren.
 
   \begin{description}
-    \item[\texttt{\textbackslash mathsf}] sans-serif, $\text{$k$-}\mathsf{Vect}$ (maar nu zie je weinig)
-    \item[\texttt{\textbackslash mathcal}] calligraphic, $\mathcal{O}$
-    \item[\texttt{\textbackslash mathfrak}] Fraktur, $\mathfrak{m}$
-    \item[\texttt{\textbackslash mathbb}] blackboard bold, $\mathbb{R}$
+    \item[\texttt{\textcolor{uagreen}{\textbackslash mathsf}\{\}}] sans-serif, $\text{$k$-}\mathsf{Vect}$ (maar nu zie je weinig)
+    \item[\texttt{\textcolor{uagreen}{\textbackslash mathcal}\{\}}] calligraphic, $\mathcal{O}$
+    \item[\texttt{\textcolor{uagreen}{\textbackslash mathfrak}\{\}}] Fraktur, $\mathfrak{m}$
+    \item[\texttt{\textcolor{uagreen}{\textbackslash mathbb}\{\}}] blackboard bold, $\mathbb{R}$
   \end{description}
 
   De laatste twee zitten verstopt in \package{amsfonts}.
@@ -282,15 +305,15 @@ $\dim_{\text{Goldie}}$
 \begin{frame}[fragile]
   \frametitle{Accenten}
 
-  Nu geen constructies meer met backslashes, maar dingen van de vorm \texttt{\textbackslash hat\{\textsl{$\langle$x$\rangle$}\}}, \texttt{\textbackslash widehat\{\textsl{$\langle$xyz$\rangle$}\}} en \texttt{\textbackslash overline\{\textsl{$\langle$xyz$\rangle$}\}} wat resulteert in $\hat{x}$, $\widehat{xyz}$ en $\overline{xyz}$.
+  Nu geen constructies meer met backslashes en obscure symbolen, maar dingen van de vorm \texttt{\textcolor{uagreen}{\textbackslash hat}\{\textsl{$\langle$x$\rangle$}\}}, \texttt{\textcolor{uagreen}{\textbackslash widehat}\{\textsl{$\langle$xyz$\rangle$}\}} en \texttt{\textcolor{uagreen}{\textbackslash overline}\{\textsl{$\langle$xyz$\rangle$}\}} wat resulteert in $\hat{x}$, $\widehat{xyz}$ en $\overline{xyz}$.
 
   De gewone weglatingstekens gelden nog wel: \verb|x'| levert $x'$.
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
   \frametitle{Horizontale ruimte}
 
-  Als basis: \verb|\quad| is gelijk aan de fontgrootte, dus 10 tot 12 punt. \verb|\qquad| is dit twee keer.
+  Als basis: \texttt{\textcolor{uagreen}{\textbackslash quad}} is gelijk aan de fontgrootte, dus 10 tot 12 punt. \texttt{\textcolor{uagreen}{\textbackslash qquad}} is dit twee keer.
 
   Kleiner:
   \begin{description}
@@ -305,22 +328,26 @@ $\dim_{\text{Goldie}}$
   \end{equation}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
   \frametitle{Puntjes}
 
-  In alle soorten en maten: \verb|\dots|, \verb|\ldots|, \verb|\cdots|, \verb|\vdots|, \verb|ddots|.
+  In alle soorten en maten: \texttt{\textcolor{uagreen}{\textbackslash dots}}, \texttt{\textcolor{uagreen}{\textbackslash ldots}}, \texttt{\textcolor{uagreen}{\textbackslash cdots}}, \texttt{\textcolor{uagreen}{\textbackslash vdots}}, \texttt{\textcolor{uagreen}{\textbackslash ddots}}.
 
-  Er zijn ook semantische varianten.
+  {\ }
+
+  Er zijn ook semantische varianten, \texttt{\textcolor{uagreen}{\textbackslash dotsc}} (komma's), \texttt{\textcolor{uagreen}{\textbackslash dotsb}} (binaire operaties), \texttt{\textcolor{uagreen}{\textbackslash dotsm}} (multiplicatie), \texttt{\textcolor{uagreen}{\textbackslash dotsi}} (integraal), \texttt{\textcolor{uagreen}{\textbackslash dotso}} (de rest).
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Symbolen}
 
-  Bijna elk gekend symbool in de wiskunde (behalve strikte normaaldeler) heeft een bepaald commando:
+  \emph{Bijna} elk gekend symbool in de wiskunde heeft een bepaald commando:
+  \small
   \begin{LTXexample}
 $\leq$, $\subseteq$, $\perp$
   \end{LTXexample}
 
+  \normalsize
   Zij die niet in standaard \TeX\ zitten zijn wel in een package te vinden dan: The Comprehensive \LaTeX\ Symbol List. Vind je het niet zo gauw? Hulde voor \url{http://detexify.kirelabs.org}.
 \end{frame}
 
@@ -340,7 +367,7 @@ $\leq$, $\subseteq$, $\perp$
 \begin{frame}[fragile]
   \frametitle{Pijlen}
 
-  \texttt{\textbackslash $\langle$\textsl{lengte}$\rangle\langle$\textsl{richting}$\rangle$ arrow}
+  \texttt{\textcolor{uagreen}{\textbackslash}$\langle$\textsl{lengte}$\rangle\langle$\textsl{richting}$\rangle$\textcolor{uagreen}{arrow}}
 
   \begin{description}
     \item[\textsl{richting}] \texttt{right}, \texttt{left}, \texttt{up}, \texttt{down}
@@ -406,8 +433,9 @@ Je kan ook meerdere alignments characters gebruiken.
 \begin{frame}[fragile]
   \frametitle{Verwijzen}
 
-  Het gekende truukje met \verb|\label| maar nu met \verb|\eqref|.
+  Het gekende truukje met \texttt{\textcolor{uagreen}{\textbackslash label}\{\}} maar nu met \texttt{\textcolor{uagreen}{\textbackslash eqref}}.
 
+  En als je wil herstarten met nummeren:
   \begin{minted}{tex}
 \numberwithin{equation}{section}
   \end{minted}
@@ -440,7 +468,7 @@ Je kan ook meerdere alignments characters gebruiken.
 
   Voor al uw stellingen: \'e\'en package, \package{amsthm}.
 
-  \texttt{\textbackslash newtheorem\{$\langle$\textsl{omgeving}$\rangle$\}[$\langle$\textsl{nummering}$\rangle$]\{$\langle$\textsl{naam}$\rangle$\}} en \texttt{\textbackslash newtheorem\{$\langle$\textsl{omgeving}$\rangle$\}\{$\langle$\textsl{naam}$\rangle$\}}[$\langle$\textsl{reset}$\rangle$]
+  \texttt{\textcolor{uagreen}{\textbackslash newtheorem}\{$\langle$\textsl{omgeving}$\rangle$\}[$\langle$\textsl{nummering}$\rangle$]\{$\langle$\textsl{naam}$\rangle$\}} en \texttt{\textcolor{uagreen}{\textbackslash newtheorem}\{$\langle$\textsl{omgeving}$\rangle$\}\{$\langle$\textsl{naam}$\rangle$\}}[$\langle$\textsl{reset}$\rangle$]
 
   \begin{minted}{tex}
 \newtheorem{theorem}{Stelling}[section]
@@ -456,7 +484,7 @@ Je kan ook meerdere alignments characters gebruiken.
   \frametitle{Opmerkingen bij \package{amsthm}}
 
   \begin{itemize}
-    \item drie stijlen, \verb|\theoremstyle{definition}|;
+    \item drie stijlen, \texttt{\textcolor{uagreen}{\textbackslash theoremstyle}\{definition\}};
     \item er is ook een omgeving voor bewijzen:
       {\footnotesize
       \begin{minted}{tex}
@@ -469,7 +497,7 @@ Je kan ook meerdere alignments characters gebruiken.
 \end{theorem}
       \end{minted}
       }
-    \item \verb|\numberswapping|
+    \item \texttt{\textcolor{uagreen}{\textbackslash numberswapping}}
   \end{itemize}
 \end{frame}
   

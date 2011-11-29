@@ -23,6 +23,7 @@
 \begin{frame}[fragile]
   \frametitle{Groter voorbeeld}
 
+  \small
   \begin{minted}{tex}
 \ce{Zn^2+
   <=>[\ce{+ 2OH-}][\ce{+ 2H+}]
@@ -31,6 +32,7 @@
   $\underset{\text{tetrahydroxozinkaation}}{\cf{[Zn(OH)4]^2-}}$
 }
   \end{minted}
+  \normalsize
 \ce{Zn^2+
   <=>[\ce{+ 2OH-}][\ce{+ 2H+}]
   $\underset{\text{zinkaation}}{\ce{Zn(OH)2 v}}$
@@ -42,9 +44,9 @@
 \begin{frame}[fragile]
   \frametitle{Werking}
 
-  Er is een \verb|\ce{}|-commando dat op een heel natuurlijke wijze chemische reacties interpreteert. Je hoeft geen math mode te gebruiken maar voor bijvoorbeeld sub- en superscripts is gebeurt dit wel standaard (dus gebruik \verb|\text{}| indien nodig).
+  Er is een \texttt{\textcolor{uagreen}{\textbackslash ce}\{\}}-commando dat op een heel natuurlijke wijze chemische reacties interpreteert. Je hoeft geen math mode te gebruiken maar voor bijvoorbeeld sub- en superscripts is gebeurt dit wel standaard (dus gebruik \texttt{\textcolor{uagreen}{\textbackslash text}\{\}} indien nodig).
 
-  Om chemische formules binnen wiskundeomgevingen te gebruiken: \verb|\cee{}|.
+  Om chemische formules binnen wiskundeomgevingen te gebruiken: \texttt{\textcolor{uagreen}{\textbackslash cee}\{\}}.
 
   \begin{minted}{tex}
 \usepackage[version=3]{mhchem}
