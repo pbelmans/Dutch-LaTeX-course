@@ -28,24 +28,21 @@
 
   \small
   werkt gewoon!
-
   \begin{gather}
     i\hbar\frac{\partial}{\partial t}\Psi=\hat{H}\Psi \\
     \left( \beta mc^2+\sum_{k=1}^3\alpha_k p_k c \right)\psi(\mathbf{x},t)=i\hbar\frac{\partial\psi(\mathbf{x},t)}{\partial t}
   \end{gather}
-
   \begin{itemize}
     \item opsommingen
     \item werken ook
   \end{itemize}
-
   Pas op met floats en verbatim.
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Titelslide}
 
-  Zoals in \verb|article| werkt \verb|\author{}| en \verb|\title{}|. Om de slide zelf aan te maken:
+  Zoals in \verb|article| werkt \texttt{\textcolor{uagreen}{\textbackslash author}\{\}} en \texttt{\textcolor{uagreen}{\textbackslash title}\{\}}. Om de titelslide z\'elf aan te maken:
   \begin{minted}{tex}
  \begin{frame}
    \titlepage
@@ -56,7 +53,7 @@
 \begin{frame}[fragile]
   \frametitle{Structuur}
 
-  De commando's \`a la \verb|\section{}| werken nog steeds, maar geven geen rechtstreekse output! Maar \package{beamer} voorziet de mogelijkheid om hier \emph{automatisch} dingen mee te doen.
+  De commando's \`a la \texttt{\textcolor{uagreen}{\textbackslash section}\{\}} werken nog steeds, maar geven geen rechtstreekse output! Maar \package{beamer} voorziet de mogelijkheid om hier \emph{automatisch} dingen mee te doen.
   \begin{minted}{tex}
  \AtBeginSection[]
  {
@@ -126,7 +123,7 @@
 \begin{frame}[fragile]
   \frametitle{Verbatim}
 
-  Het waarom brengt ons te ver, maar:
+  Het waarom brengt ons te ver, maar gebruik \verb|[fragile]|:
   \begin{minted}{tex}
  \begin{frame}[fragile]
    \frametitle{Titel}
@@ -147,13 +144,13 @@
 \begin{frame}
   \frametitle{Thema's}
 
-  Met \texttt{\textbackslash usetheme\{$\langle$\textsl{naam}$\rangle$\}} kan je andere thema's gebruiken. We bekijken klassikaal hoofdstuk 15 uit de manual.
+  Met \texttt{\textcolor{uagreen}{\textbackslash usetheme}\{$\langle$\textsl{naam}$\rangle$\}} kan je andere thema's gebruiken. We bekijken klassikaal hoofdstuk 15 uit de manual.
 \end{frame}
 
 \begin{frame}
   \frametitle{\texttt{UniversiteitAntwerpen}}
 
-  Geschreven door iemand van het departement Wiskunde--Informatica, zie ook \url{http://win.ua.ac.be/~nschloe/content/ua-beamer-theme}.
+  Geschreven door iemand van het departement Wiskunde--Informatica, zie ook \href{http://win.ua.ac.be/~nschloe/content/ua-beamer-theme}{\texttt{http://win.ua.ac.be/\textasciitilde nschloe/content/ua-beamer-theme}}.
 
   We zullen deze eens proberen te installeren.
 \end{frame}

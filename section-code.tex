@@ -19,7 +19,7 @@
 \begin{minted}[fontsize=\small,linenos=true,mathescape=true,frame=lines]{cpp}
 string title = "Dit is een string";
 /*
-Gedefinieerd als $\pi=\lim_{n\rightarrow\infty}\frac{P_n}{d}$ met $P$ de omtrek
+Gedefinieerd als $\pi=\lim_{n\rightarrow\infty}\frac{P_n}{d}$ met $P_n$ de omtrek
 van een $n$-zijdige regelmatige veelhoek
 ingeschreven in een cirkel met straal $d$.
 */
@@ -27,29 +27,34 @@ const double pi = 3.1415926235
 \end{minted}
 \end{frame}
 
-\begin{frame}[fragile]
+\begin{frame}
   \frametitle{De mogelijkheden}
 
+  In volgorde van oplopende awesomeness:
   \begin{enumerate}
-    \item \verb|verbatim| gebruiken;
+    \item \texttt{verbatim} gebruiken;
     \item \package{listings};
     \item \package{minted}.
   \end{enumerate}
+\end{frame}
 
-  Niet helemaal hetzelfde of nog niet door mij gebruikt:
+\begin{frame}
+  \frametitle{Alternatieven en gerelateerd}
+
   \begin{itemize}
-    \item \package{algorithmic} voor pseudocode;
-    \item \package{verbatim} uitbreiding op \verb|verbatim|
-    \item \package{fancyvrb} vooral omgevingen om code in te plaatsen, met kaders en dergelijke (wordt intern gebruikt)
+    \item \package{algorithmic} voor \emph{pseudocode};
+    \item \package{verbatim} als uitbreiding op~\texttt{\textcolor{uagreen}{\textbackslash verb}|$\langle$\textsl{tekst}$\rangle$|};
+    \item \package{fancyvrb} floats voor code-omgevingen, wordt vaak intern gebruikt;
+    \item \package{showexpl} \LaTeX-code met voorbeeld.
   \end{itemize}
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{\texttt{verbatim}}
 
-  Dit kennen we op zich al: \texttt{\textbackslash verb|$\langle$\textsl{tekst}$\rangle$|}.
+  Dit kennen we op zich al: \texttt{\textcolor{uagreen}{\textbackslash verb}|$\langle$\textsl{tekst}$\rangle$|}.
 
-  Maar er is ook:
+  Maar er is ook (zonder \package{verbatim}!):
   \begin{LTXexample}
 \begin{verbatim}
 dit is code
@@ -102,11 +107,6 @@ nieuwregels tellen
   we zullen eens \emph{proberen}
 \end{lstlisting}
 \end{minted}
-
-\begin{lstlisting}
-% commentaar
-we zullen eens \emph{proberen}
-\end{lstlisting}
 \end{frame}
 
 \begin{frame}
@@ -119,7 +119,7 @@ we zullen eens \emph{proberen}
   \end{itemize}
 
   We moeten nog opties instellen:
-  \texttt{\textbackslash lstset\{$\langle$\textsl{opties$=$waarden}$\rangle$\}}
+  \texttt{\textcolor{uagreen}{\textbackslash lstset}\{$\langle$\textsl{opties$=$waarden}$\rangle$\}}
 \end{frame}
 
 \begin{frame}[fragile]
@@ -181,10 +181,10 @@ we zullen eens \emph{proberen}
 
   \begin{description}
     \item[\texttt{numbers}] positie van de regelnummers;
-    \item[\texttt{showspaces}] zoals \verb!\verb*||!;
+    \item[\texttt{showspaces}] zoals \texttt{\textcolor{uagreen}{\textbackslash verb}*|$\langle$\textsl{code}$\rangle$|};
     \item[\texttt{showstringspaces}] bovenstaande, specifiek voor strings;
     \item[\texttt{showtabs}] bovenstaande, specifiek voor tabs;
-    \item[\texttt{breaklines}] line breaks (dit zal je willen, dus \verb|breaklines=true|).
+    \item[\texttt{breaklines}] line breaks (dit zal je meestal willen, dus \verb|breaklines=true|).
   \end{description}
 \end{frame}
 
@@ -225,10 +225,6 @@ we zullen eens \emph{proberen}
 
   We bestuderen het hoofdstuk over captions in de manual. Dit is 4.9.
 
-  \begin{exampleblock}{Bekentenis}
-    Bij het maken van deze slides wist ik niet dat dit allemaal mogelijk was, ik gebruikte tot voor kort dus altijd de vorige slide als oplossing, maar ik moet mezelf aanleren van deze techniek te gebruiken.
-  \end{exampleblock}
-
   \begin{alertblock}{Opgelet}
     Dit zijn geen echte floats! Maar we kunnen ze natuurlijk wrappen in floats, zonder captions te gebruiken.
   \end{alertblock}
@@ -252,16 +248,31 @@ we zullen eens \emph{proberen}
   \begin{itemize}
     \item geen line wrap;
     \item geen page breaks;
-    \item niet bijster gemakkelijk
+    \item niet bijster gemakkelijk (te installeren op Windows).
   \end{itemize}
+\end{frame}
 
+\begin{frame}
+  \frametitle{\texttt{-{-}enable-write18}}
+
+  \LaTeX\ mag niet zomaar bestanden schrijven enzo (het is namelijk mogelijk een virus te schrijven in \TeX), maar soms is het nu eenmaal nodig. We voegen hiervoor de optie \texttt{-{-}enable-write18} toe, zodat \LaTeX\ andere programma's mag oproepen en mag wegschrijven naar bestanden, wat nodig is om \package{minted} te gebruiken.
+
+  \begin{alertblock}{Proof of concept}
+    Zie \url{http://cseweb.ucsd.edu/~hovav/dist/texhack.pdf} voor de ge\"interesseerde. Maar don't panic, er bestaan geen echte.
+  \end{alertblock}
+\end{frame}
+
+\begin{frame}[fragile]
+  \frametitle{Voorbeeld van \package{minted}}
+
+  \inputminted[fontsize=\scriptsize,linenos=true,mathescape=true,frame=lines]{tex}{minted-example.tex} 
 \end{frame}
 
 \begin{frame}[fragile]
   \frametitle{Oefening}
 
 \lstset{
-  basicstyle=\ttfamily\tiny,
+  basicstyle=\ttfamily,
   keywordstyle=\color{blue},
   identifierstyle=\color{red},
   commentstyle=\color{green},
@@ -269,11 +280,22 @@ we zullen eens \emph{proberen}
   caption=\ttfamily\lstname
 }
 
-\scriptsize
 \lstinputlisting[language=c++]{main.cpp}
+\end{frame}
 
-\begin{listing}[H]
-  \lstinputlisting[language=c++,caption=]{main.cpp}
-  \caption{Nu de caption in de float zelf}
-\end{listing}
+\begin{frame}[fragile]
+  \frametitle{Zoals hoofdstuk 4.9}
+
+\lstset{
+  basicstyle=\ttfamily,
+  keywordstyle=\color{blue},
+  identifierstyle=\color{red},
+  commentstyle=\color{green},
+  stringstyle=\color{blue},
+}
+    
+  \begin{listing}[H]
+    \lstinputlisting[language=c++,caption=]{main.cpp}
+    \caption{Nu de caption in de float zelf}
+  \end{listing}
 \end{frame}
