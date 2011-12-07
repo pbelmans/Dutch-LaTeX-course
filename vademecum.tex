@@ -1,0 +1,91 @@
+\documentclass[a4paper,9pt,article,oneside,openany]{memoir}
+\usepackage[dutch]{babel}
+\usepackage{minted}
+
+% fonts
+\usepackage[T1]{fontenc}
+\usepackage[charter]{mathdesign}
+\usepackage[scaled]{beramono,berasans}
+\usepackage{microtype}
+
+% colors
+\definecolor{uablue}{RGB}{0,61,100}
+\definecolor{uared}{RGB}{126,0,47}
+\definecolor{vividbrown}{RGB}{215,154,70}
+\definecolor{uagreen}{RGB}{0,126,17}
+
+\author{Pieter Belmans}
+\title{\LaTeX-vademecum}
+
+\begin{document}
+\maketitle
+
+\chapter{Eerste les}
+\section{Basisdocument}
+\begin{minted}{tex}
+\documentclass[a4paper]{article}
+\usepackage[dutch]{babel}
+\usepackage{hyperref}
+
+\author{Naam}
+\title{Titel}
+
+\begin{document}
+\maketitle
+
+\end{document}
+\end{minted}
+Alles tussen \mint{tex}|\documentclass[a4paper]{article}| en \mint{tex}|\begin{document}| is de \emph{preamble}, alles tussen \mint{tex}|\begin{document}| en \mint{tex}|\end{document}| het eigenlijke document. In de preamble komen de packages en de configuratie van je bestand, in het document je tekst.
+
+\section{Witruimte}
+\begin{enumerate}
+  \item \'e\'en spatie is hetzelfde als meerdere spaties;
+  \item spaties, tabs en enters zijn (bijna) hetzelfde;
+  \item spaties aan het begin van een regel worden volledig genegeerd;
+  \item twee regeleindes, dus \'e\'en witregel is een nieuwe alinea.
+\end{enumerate}
+
+\section{Speciale karakters}
+Sommige karakters in \LaTeX\ zijn niet zomaar te produceren, je moet ze \emph{escapen}.
+
+\begin{center}
+  \begin{tabular}{cccccccccccccccc}
+    \mint{tex}|\$| & \$ & 
+    \mint{tex}|\&| & \& &
+    \mint{tex}|\%| & \% &
+    \mint{tex}|\#| & \# &
+    \mint{tex}|\_| & \_ &
+    \mint{tex}|\{| & \{ &
+    \mint{tex}|\}| & \}
+  \end{tabular}
+\end{center}
+
+Ook voor aanhalingstekens is het opletten geblazen: gebruik \verb|``tekst''| in plaats van \verb|"tekst"|. Dit geldt ook voor \verb|`enkele'|. Daarnaast zijn er vier liggende streepjes:
+\begin{center}
+  \begin{tabular}[]{cccc}
+  	naam & input & output & doel \\\midrule
+    hyphen & \mint{tex}|-| & - & splitsen in lettergrepen \\
+  	en dash & \mint{tex}|--| & -- & reeksen jaartallen, pagina's, \ldots \\
+  	em dash & \mint{tex}|---| & --- & gedachtestreepje \\
+  	minteken & \mint{tex}|$-$| & $-$ & in wiskundige uitdrukking
+  \end{tabular}
+\end{center}
+
+\section{Structuur}
+Je maakt een nieuwe alinea door een witregel open te laten, \emph{niet} door creatief gebruik van \mint{tex}|\\|. Om hoofdstukken en varianten aan te duiden gebruiken we
+\begin{center}
+  \begin{tabular}{lcl}
+    commando & niveau & opmerking \\\midrule
+    \mint{tex}|\part{}| & -1 & niet in~\texttt{letter} \\
+    \mint{tex}|\chapter{}| & 0 & niet in~\texttt{letter} en~\texttt{article} \\
+    \mint{tex}|\section{}| & 1 & niet in~\texttt{letter} \\
+    \mint{tex}|\subsection{}| & 2 & niet in~\texttt{letter} \\
+    \mint{tex}|\subsubsection{}| & 3 & niet in~\texttt{letter} \\
+    \mint{tex}|\paragraph{}| & 4 & niet in~\texttt{letter} \\
+    \mint{tex}|\subparagraph{}| & 5 & niet in~\texttt{letter} \\
+  \end{tabular}
+\end{center}
+
+En gebruik \mint{tex}|\tableofcontents| om een inhoudstafel te produceren. Als je niet wil dat een bepaald hoofdstuk hier in komt: \mint{tex}|\section*{}|, de zogeheten \emph{starred variant}.
+
+\end{document}
